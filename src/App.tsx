@@ -1,8 +1,10 @@
+import { Navbar } from "./Navbar/Navbar"
+
 function App() {
 
   return (
     <>
-    <h1>Hello</h1>
+    <Navbar />
     </>
   )
 }
