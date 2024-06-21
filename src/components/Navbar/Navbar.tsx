@@ -19,9 +19,16 @@ export function Navbar (props: INavbarProps) {
         <button onClick={() => setShowSearch(true)} className='hidden md:flex'>
           <SearchSvg />
         </button>
-        <button onClick={() => setShowMenu(true)} className='xl:hidden'>
+        <button onClick={() => setShowMenu(true)} className='lg:hidden'>
           <MenuItemSvg />
         </button>
+        <div className='hidden lg:flex items-center gap-8'>
+          <a href="#" className='hover:font-medium'>Home</a>
+          <a href="#" className='hover:font-medium'>Products</a>
+          <a href="#" className='hover:font-medium'>Cart (0)</a>
+        </div>
+        <div className='hidden lg:block w-[1px] h-8 bg-preto'></div>
+        <a href="#" className='hidden lg:flex hover:font-medium'>Login / Register</a>
       </div>
 
       <Menu showMenu={showMenu} onCloseMenu={() => setShowMenu(false)} />
