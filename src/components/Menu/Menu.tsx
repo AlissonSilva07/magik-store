@@ -8,8 +8,8 @@ export interface IMenuProps {
 
 export function Menu ({ showMenu, onCloseMenu }: IMenuProps) {
   return (
-    <div className={`${showMenu ? 'fixed' : 'hidden'} top-0 right-0 left-0 bottom-0 bg-white flex flex-col justify-between`}>
-        <div className='bg-branco'>
+    <div className={`${showMenu ? 'fixed' : 'hidden'} top-0 right-0 left-0 bottom-0 bg-branco flex flex-col justify-between`}>
+        <div>
           <div className='h-20 px-4 md:px-8 flex items-center justify-between border-b border-preto'>
               <p className='text-2xl font-bold'>Menu</p>
               <button onClick={() => onCloseMenu()}>
