@@ -12,7 +12,7 @@ export function Navbar (props: INavbarProps) {
     const [ showMenu, setShowMenu ] = useState<boolean>(false)
     const [ showSearch, setShowSearch ] = useState<boolean>(false)
   return (
-    <nav className='h-20 bg-white px-4 md:px-8 flex items-center justify-between border-b border-preto z-50'>
+    <nav className='fixed top-0 right-0 left-0 h-20 bg-white px-4 md:px-8 bg-branco flex items-center justify-between border-b border-preto z-50'>
       <p className='text-2xl font-black'>MAGIK!</p>
 
       <div className='flex items-center gap-8'>
