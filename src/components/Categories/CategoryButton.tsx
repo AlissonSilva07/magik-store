@@ -24,7 +24,7 @@ export function CategoryButton ({ title }: ICategoryButtonProps) {
         title === "men's clothing" ? MensClothing :
         title === "women's clothing" ? WomensClothing :
         'null'
-      } alt={title} className='opacity-70' />
+      } alt={title} className='w-full opacity-70' />
     </div>
   );
 }
