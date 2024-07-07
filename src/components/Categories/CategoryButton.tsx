@@ -1,8 +1,8 @@
 import ButtonGo from '../../assets/Categories/Button Go.png'
-import Electronics from '../../assets/Categories/image 11.png'
-import Jewelry from '../../assets/Categories/image 10.png'
-import MensClothing from '../../assets/Categories/image 8.png'
-import WomensClothing from '../../assets/Categories/image 9.png'
+import Electronics from '../../assets/Categories/electronics.jpg'
+import Jewelry from '../../assets/Categories/jewelery.jpg'
+import MensClothing from '../../assets/Categories/mens clothing.jpg'
+import WomensClothing from '../../assets/Categories/womens clothing.jpg'
 
 export interface ICategoryButtonProps {
     title: string,
@@ -10,7 +10,7 @@ export interface ICategoryButtonProps {
 
 export function CategoryButton ({ title }: ICategoryButtonProps) {
   return (
-    <div className='group relative w-full p-2.5 flex flex-col items-center justify-center hover:border hover:border-preto rounded-lg z-30'>
+    <div className='group relative w-full p-2.5 flex flex-col items-center justify-center border border-branco hover:border-preto rounded-lg z-30'>
       <div className='absolute flex items-center gap-4 z-40'>
         <p className='text-2xl font-bold text-branco [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]'>{title.toLocaleUpperCase()}</p>
         <button className='hidden group-hover:block'>
@@ -24,7 +24,7 @@ export function CategoryButton ({ title }: ICategoryButtonProps) {
         title === "men's clothing" ? MensClothing :
         title === "women's clothing" ? WomensClothing :
         'null'
-      } alt={title} className='w-full opacity-70' />
+      } alt={title} className='w-full h-[92px] object-cover md:h-[184px] lg:h-[504px] rounded-lg opacity-70' />
     </div>
   );
 }
