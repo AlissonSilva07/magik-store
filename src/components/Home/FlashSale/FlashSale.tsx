@@ -26,13 +26,13 @@ export function FlashSale () {
         }).slice(0, 3)
     }, [products, category])
 
-    const cardsRef = useRef(null);
+    const productsRef = useRef(null);
 
   return (
     <section className="w-full p-4 md:p-8 flex flex-col items-center gap-4 md:gap-8 lg:p-16">
         <h2 className="text-4xl font-bold">FLASH SALE</h2>
         <FlashSaleSelector categories={categories} handleCategory={handleCategory} />
-        <div ref={cardsRef} className="w-full flex items-center lg:justify-center gap-8 lg:gap-16 overflow-x-scroll lg:overflow-hidden scroll-smooth">
+        <div ref={productsRef} className="w-full flex items-center lg:justify-center gap-8 lg:gap-16 overflow-x-scroll lg:overflow-hidden scroll-smooth">
             {filteredProducts && filteredProducts.map(p => (
                 <ProductCard product={p} key={p.id} />
             ))}
