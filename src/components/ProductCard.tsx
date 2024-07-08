@@ -20,11 +20,11 @@ export function ProductCard ({ product }: IProductCardProps) {
         <p className="text-3xl font-bold">${product.price}</p>
 
         <div className="w-full flex items-center gap-6">
-            <button className="w-full flex items-center justify-center p-3 gap-2.5 bg-roxo/20 text-roxo rounded-full">
+            <button className="w-full flex items-center justify-center p-3 gap-2.5 bg-roxo/20 hover:bg-roxo/40 text-roxo rounded-full">
                 Buy Now
                 <img src={ArrowRight} alt="Buy Now" />
             </button>
-            <button className="p-2.5">
+            <button className="p-3 hover:bg-roxo/10 rounded-full">
                 <img src={ShoppingCart} alt="" />
             </button>
         </div>

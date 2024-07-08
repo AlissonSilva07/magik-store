@@ -2,13 +2,11 @@ import { useState } from 'react';
 import MenuItemSvg from './MenuItemSvg';
 
 import { Menu } from '../Menu/Menu';
-import SearchSvg from './SearchSvg';
+import Search from '../../assets/Navbar/search.png'
 import { ModalSearch } from './ModalSearch';
 
-export interface INavbarProps {
-}
 
-export function Navbar (props: INavbarProps) {
+export function Navbar () {
     const [ showMenu, setShowMenu ] = useState<boolean>(false)
     const [ showSearch, setShowSearch ] = useState<boolean>(false)
   return (
@@ -17,7 +15,7 @@ export function Navbar (props: INavbarProps) {
 
       <div className='flex items-center gap-8'>
         <button onClick={() => setShowSearch(true)} className='hidden md:flex'>
-          <SearchSvg />
+          <img src={Search} className='p-3 hover:bg-cinza-800/40 rounded-full scale-90' />
         </button>
         <button onClick={() => setShowMenu(true)} className='lg:hidden'>
           <MenuItemSvg />
