@@ -1,8 +1,8 @@
-import { Categories } from "../components/Categories/Categories";
-import { FlashSale } from "../components/FlashSale/FlashSale";
-import { Hero } from "../components/Hero/Hero";
-import { Spinner } from "../components/Spinner/Spinner";
-import { TopBrands } from "../components/TopBrands/TopBrands";
+import { Categories } from "../components/Home/Categories/Categories";
+import { FlashSale } from "../components/Home/FlashSale/FlashSale";
+import { Hero } from "../components/Home/Hero/Hero";
+import { Spinner } from "../components/Home/Spinner/Spinner";
+import { TopBrands } from "../components/Home/TopBrands/TopBrands";
 
 export function Home () {
   return (

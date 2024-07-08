@@ -2,7 +2,7 @@ import { useState } from 'react';
 import MenuItemSvg from './MenuItemSvg';
 
 import { Menu } from '../Menu/Menu';
-import Search from '../../assets/Navbar/search.png'
+import Search from '../../../assets/Navbar/search.png'
 import { ModalSearch } from './ModalSearch';
 
 

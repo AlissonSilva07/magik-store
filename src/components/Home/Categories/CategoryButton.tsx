@@ -1,8 +1,8 @@
-import ButtonGo from '../../assets/Categories/Button Go.png'
-import Electronics from '../../assets/Categories/electronics.jpg'
-import Jewelry from '../../assets/Categories/jewelery.jpg'
-import MensClothing from '../../assets/Categories/mens clothing.jpg'
-import WomensClothing from '../../assets/Categories/womens clothing.jpg'
+import ButtonGo from '../../../assets/Categories/Button Go.png'
+import Electronics from '../../../assets/Categories/electronics.jpg'
+import Jewelry from '../../../assets/Categories/jewelery.jpg'
+import MensClothing from '../../../assets/Categories/mens clothing.jpg'
+import WomensClothing from '../../../assets/Categories/womens clothing.jpg'
 
 export interface ICategoryButtonProps {
     title: string,

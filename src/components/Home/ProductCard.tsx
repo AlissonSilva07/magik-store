@@ -1,6 +1,6 @@
-import { Product } from "../@types/Product";
-import ArrowRight from '../assets/ProductCard/arrow-right.png'
-import ShoppingCart from '../assets/ProductCard/shopping-cart.png'
+import { Product } from "../../@types/Product";
+import ArrowRight from '../../assets/ProductCard/arrow-right.png'
+import ShoppingCart from '../../assets/ProductCard/shopping-cart.png'
 
 export interface IProductCardProps {
     product: Product

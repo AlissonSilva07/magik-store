@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useApi } from "../../hooks/useApi";
+import { useApi } from "../../../hooks/useApi";
 import { FlashSaleSelector } from "./FlashSaleSelector";
-import { Product } from "../../@types/Product";
+import { Product } from "../../../@types/Product";
 import { ProductCard } from "../ProductCard";
 
 export function FlashSale () {

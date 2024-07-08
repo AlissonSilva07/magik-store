@@ -1,7 +1,7 @@
-import Byilaclesen from '../../assets/TopBrands/biylaclesen.png'
-import Fjall from '../../assets/TopBrands/fjallraven.png'
-import SD from '../../assets/TopBrands/sandisk.png'
-import WD from '../../assets/TopBrands/wd.png'
+import Byilaclesen from '../../../assets/TopBrands/biylaclesen.png'
+import Fjall from '../../../assets/TopBrands/fjallraven.png'
+import SD from '../../../assets/TopBrands/sandisk.png'
+import WD from '../../../assets/TopBrands/wd.png'
 
 export function TopBrands () {
   return (

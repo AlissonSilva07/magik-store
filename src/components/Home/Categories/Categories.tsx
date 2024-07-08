@@ -1,4 +1,4 @@
-import { useApi } from "../../hooks/useApi";
+import { useApi } from "../../../hooks/useApi";
 import { CategoryButton } from "./CategoryButton";
 
 export function Categories () {

@@ -1,6 +1,6 @@
-import HeroImg from '../../assets/img hero.png'
-import ArrowRight from '../../assets/Hero/arrow-right.png'
-import ArrowRight2 from '../../assets/Hero/arrow-right2.png'
+import HeroImg from '../../../assets/img hero.png'
+import ArrowRight from '../../../assets/Hero/arrow-right.png'
+import ArrowRight2 from '../../../assets/Hero/arrow-right2.png'
 
 export function Hero () {
   return (
