@@ -11,7 +11,7 @@ export interface ICategoryButtonProps {
 export function CategoryButton ({ title }: ICategoryButtonProps) {
   return (
     <div className='group relative w-full p-2.5 flex flex-col items-center justify-center border border-branco hover:border-preto rounded-lg z-30'>
-      <div className='absolute flex items-center gap-4 z-40'>
+      <div className='absolute flex items-center gap-4 z-30'>
         <p className='text-2xl font-bold text-branco [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]'>{title.toLocaleUpperCase()}</p>
         <button className='hidden group-hover:block'>
             <img src={ButtonGo} alt="Go" />

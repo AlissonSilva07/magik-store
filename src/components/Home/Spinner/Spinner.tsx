@@ -14,7 +14,7 @@ export function Spinner () {
   }
   
   return (
-    <Marquee className="h-fit p-4 w-full bg-preto flex items-center z-40">
+    <Marquee className="h-fit p-4 w-full bg-preto flex items-center z-30">
       {renderMultiple(<SpinnerTrack />, 12)}
     </Marquee> 
   );
