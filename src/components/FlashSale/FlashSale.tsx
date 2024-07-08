@@ -30,7 +30,6 @@ export function FlashSale (props: IFlashSaleProps) {
     }, [products, category])
 
     const cardsRef = useRef(null);
-  const currentIndex = useRef(0);
 
   return (
     <section className="w-full p-4 md:p-8 flex flex-col items-center gap-4 md:gap-8 lg:p-16">

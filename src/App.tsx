@@ -3,6 +3,7 @@ import { FlashSale } from "./components/FlashSale/FlashSale"
 import { Hero } from "./components/Hero/Hero"
 import { Navbar } from "./components/Navbar/Navbar"
 import { Spinner } from "./components/Spinner/Spinner"
+import { TopBrands } from "./components/TopBrands/TopBrands"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Spinner />
       <Categories />
       <FlashSale />
+      <TopBrands />
     </>
   )
 }

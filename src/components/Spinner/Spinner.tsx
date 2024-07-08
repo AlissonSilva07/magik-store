@@ -1,10 +1,7 @@
 import Marquee from "react-fast-marquee";
 import { SpinnerTrack } from "./SpinnerTrack";
 
-export interface ISpinnerProps {
-}
-
-export function Spinner (props: ISpinnerProps) {
+export function Spinner () {
 
   const renderMultiple = ( component: JSX.Element, repeat: number): JSX.Element[] => {
     let arr = []
