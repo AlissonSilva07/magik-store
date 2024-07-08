@@ -1,3 +1,4 @@
+import { Footer } from "./assets/Footer/Footer"
 import { Categories } from "./components/Categories/Categories"
 import { FlashSale } from "./components/FlashSale/FlashSale"
 import { Hero } from "./components/Hero/Hero"
@@ -15,6 +16,7 @@ function App() {
       <Categories />
       <FlashSale />
       <TopBrands />
+      <Footer />
     </>
   )
 }

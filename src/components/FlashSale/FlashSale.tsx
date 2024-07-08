@@ -4,10 +4,7 @@ import { FlashSaleSelector } from "./FlashSaleSelector";
 import { Product } from "../../@types/Product";
 import { ProductCard } from "../ProductCard";
 
-export interface IFlashSaleProps {
-}
-
-export function FlashSale (props: IFlashSaleProps) {
+export function FlashSale () {
     const {categories, getProducts} = useApi()
     const [products, setProducts] = useState<Product[]>([])
     const [category, setCategory] = useState<string>('electronics')
