@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { BaseLayout } from "./pages/BaseLayout";
 import { Home } from "./pages/Home";
-import { Products } from "./components/Products/Products";
+import { Products } from "./pages/Products";
 
 export function AppRoutes() {
     return (
