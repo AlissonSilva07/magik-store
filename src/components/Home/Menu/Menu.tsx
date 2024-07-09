@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CloseSvg from '../Navbar/CloseSvg';
+import x from '../../../assets/Navbar/x.svg' 
 import SearchSvg from '../Navbar/SearchSvg';
 
 export interface IMenuProps {
@@ -11,10 +11,10 @@ export function Menu ({ showMenu, onCloseMenu }: IMenuProps) {
   return (
     <div className={`${showMenu ? 'fixed' : 'hidden'} top-0 right-0 left-0 bottom-0 bg-branco flex flex-col justify-between z-40`}>
         <div>
-          <div className='h-20 px-4 md:px-8 flex items-center justify-between border-b border-preto'>
+          <div className='h-20 px-4 md:px-8 flex items-center justify-between bg-preto text-branco'>
               <p className='text-2xl font-bold'>Menu</p>
               <button onClick={() => onCloseMenu()}>
-                  <CloseSvg />
+                  <img src={x} alt='Close' />
               </button>
           </div>
 

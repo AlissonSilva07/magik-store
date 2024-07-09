@@ -4,10 +4,7 @@ import { ProductsList } from '../components/Products/ProductsList';
 import { ModalFilters } from '../components/Products/ModalFilters/ModalFilters';
 import { SidebarFilters } from '../components/Products/SidebarFilters';
 
-export interface IProductsProps {
-}
-
-export function Products (props: IProductsProps) {
+export function Products () {
     const [showFilters, setShowFilters] = useState<boolean>(false)
 
     const handleOpenFilters = () => {

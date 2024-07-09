@@ -7,7 +7,7 @@ import { ProductsPagination } from "./ProductsPagination";
 export interface IProductsListProps {
 }
 
-export function ProductsList (props: IProductsListProps) {
+export function ProductsList () {
     const {getProducts} = useApi()
     const [products, setProducts] = useState<Product[]>([])
 
@@ -29,13 +29,13 @@ export function ProductsList (props: IProductsListProps) {
 
   return (
     <section className="flex flex-col gap-4 lg:w-4/5 lg:p-4">
-      <p className="text-2xl font-bold">Showing: All Products</p>
+      <p className="text-center md:text-start text-2xl font-bold">Showing: All Products</p>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-4">
         {currentItems && currentItems.map(p => (
             <ProductCard product={p} key={p.id} />
         ))}
       </div>
-      <ProductsPagination current={current} setCurrent={setCurrent} itemsPerPage={itemsPerPage} playlistLength={playlistLength} />
+      {products.length > 0 && <ProductsPagination current={current} setCurrent={setCurrent} itemsPerPage={itemsPerPage} playlistLength={playlistLength} />}
     </section>
   );
 }
