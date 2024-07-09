@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import MenuItemSvg from './MenuItemSvg';
-import { Search } from 'lucide-react'
+import { Search, MenuIcon } from 'lucide-react'
 import { Menu } from '../Menu/Menu';
 import { ModalSearch } from './ModalSearch';
 
@@ -17,7 +16,7 @@ export function Navbar () {
           <Search className='w-[18px] rounded-full' />
         </button>
         <button onClick={() => setShowMenu(true)} className='lg:hidden'>
-          <MenuItemSvg />
+          <MenuIcon />
         </button>
         <div className='hidden lg:flex items-center gap-8'>
           <a href="#" className='hover:font-medium'>Home</a>

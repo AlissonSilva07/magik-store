@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import x from '../../../assets/Navbar/x.svg' 
+import { X } from 'lucide-react'
 import SearchSvg from '../Navbar/SearchSvg';
 
 export interface IMenuProps {
@@ -14,7 +14,7 @@ export function Menu ({ showMenu, onCloseMenu }: IMenuProps) {
           <div className='h-20 px-4 md:px-8 flex items-center justify-between bg-preto text-branco'>
               <p className='text-2xl font-bold'>Menu</p>
               <button onClick={() => onCloseMenu()}>
-                  <img src={x} alt='Close' />
+                  <X />
               </button>
           </div>
 
