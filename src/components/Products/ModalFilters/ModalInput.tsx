@@ -12,6 +12,6 @@ export function ModalInput ({ placeholder }: IModalInputProps) {
     }
 
   return (
-    <input type="number" step={0.01} placeholder={placeholder} value={price} onChange={e => handleChange(e)} className="w-full p-3 text-cinza-800 border border-cinza-800 rounded-lg" />
+    <input type="number" step={0.01} min={0.01} placeholder={placeholder} value={price} onChange={e => handleChange(e)} className="w-full p-3 text-cinza-800 border border-cinza-800 rounded-lg" />
   );
 }
