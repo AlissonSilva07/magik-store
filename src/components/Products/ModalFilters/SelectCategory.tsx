@@ -30,7 +30,7 @@ export function SelectCategory({ categories, setInputChecked }: IRadioCategoryPr
                     />
                     <label
                         htmlFor={option}
-                        className={`button ${option === selectedOption ? 'bg-roxo text-branco' : 'bg-branco text-cinza-100'} shrink-0 px-3 py-1 flex items-center justify-center rounded-full`}
+                        className={`button ${option === selectedOption ? 'bg-roxo text-branco hover:bg-roxo hover:text-branco' : 'bg-branco text-cinza-800 hover:text-preto'} shrink-0 px-3 py-1 flex items-center justify-center rounded-full cursor-pointer`}
                     >
                         {option}
                     </label>
