@@ -6,13 +6,13 @@ import { SelectSorting } from '../Products/ModalFilters/SelectSorting';
 export interface ISidebarFiltersProps {
 }
 
-export function SidebarFilters (props: ISidebarFiltersProps) {
+export function SidebarFilters () {
     const { categories } = useApi()
     const sorting: string[] = ['Popularity', 'Newest', 'Oldest', 'A-Z', 'Z-A', 'High Price', 'Low Price']
   return (
     <div className='hidden md:w-1/5 lg:flex flex-col bg-branco border-r z-30'>
         <div className='w-full h-20 p-4 md:p-8 bg-preto text-branco flex items-center justify-between'>
-          <p className='text-2xl font-bold'>Filter Results</p>
+          <p className='text-xl font-bold'>Filter Results</p>
         </div>
         <div className='h-full m-4 md:m-8 flex flex-col gap-16'>
           <div>

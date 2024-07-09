@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import ChevronLeft from '../../assets/Pagination/chevron-left.png'
-import ChevronRight from '../../assets/Pagination/chevron-right.png'
+import { ChevronLeft, ChevronRight} from 'lucide-react'
 
 export interface IPaginationProps {
     current: number
@@ -38,12 +37,12 @@ export function ProductsPagination ({ current, setCurrent, itemsPerPage, playlis
 
   return (
     <nav className='w-full flex items-center justify-center gap-4 md:gap-8'>
-      <button disabled={current === 1} onClick={prevPage} className='h-12 w-[50px] px-[18px] py-2.5 flex flex-col items-center justify-center bg-branco border rounded-md'>
-        <img src={ChevronLeft} alt="" />
+      <button disabled={current === 1} onClick={prevPage} className='group h-12 w-[50px] px-[18px] py-2.5 flex flex-col items-center justify-center bg-roxo border border-roxo disabled:bg-branco disabled:border-cinza-100 rounded-md'>
+        <ChevronLeft className='text-branco group-disabled:text-cinza-100' />
       </button>
         {renderButtons()}
-      <button disabled={current === total} onClick={nextPage} className='h-12 w-[50px] px-[18px] py-2.5 flex flex-col items-center justify-center bg-roxo border border-roxo rounded-md'>
-        <img src={ChevronRight} alt="" />
+      <button disabled={current === total} onClick={nextPage} className='group h-12 w-[50px] px-[18px] py-2.5 flex flex-col items-center justify-center bg-roxo border border-roxo disabled:bg-branco disabled:border-cinza-100 rounded-md'>
+        <ChevronRight className='text-branco group-disabled:text-cinza-100' />
       </button>
     </nav>
   );

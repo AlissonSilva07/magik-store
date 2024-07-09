@@ -1,4 +1,4 @@
-import X from '../../../assets/x.png'
+import { X } from 'lucide-react'
 import { useApi } from '../../../hooks/useApi';
 import { ModalInput } from './ModalInput';
 import { SelectCategory } from './SelectCategory';
@@ -17,7 +17,7 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
       <div className='fixed top-0 left-0 bottom-0 sm:right-0 md:w-1/2 md:translate-x-full md:shadow-lg flex flex-col bg-branco z-50'>
         <div onClick={handleCloseFilters} className='w-full h-20 p-4 md:p-8 bg-preto text-branco flex items-center justify-between'>
           <p className='text-2xl font-bold'>Filter Results</p>
-          <img src={X} alt="Close" />
+          <X className='text-branco' />
         </div>
         <div className='h-full m-4 md:m-8 flex flex-col justify-between'>
           <div>

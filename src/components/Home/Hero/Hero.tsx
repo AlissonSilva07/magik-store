@@ -1,6 +1,5 @@
 import HeroImg from '../../../assets/img hero.png'
-import ArrowRight from '../../../assets/Hero/arrow-right.png'
-import ArrowRight2 from '../../../assets/Hero/arrow-right2.png'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom';
 
 export function Hero() {
@@ -13,8 +12,7 @@ export function Hero() {
         <Link to='/products'>
           <button className='group py-2 px-3 bg-white flex items-center gap-2 rounded-full border border-preto hover:bg-preto hover:text-branco'>
             <p>See Products</p>
-            <img src={ArrowRight} alt="Go" className='block group-hover:hidden' />
-            <img src={ArrowRight2} alt="Go" className='hidden group-hover:block' />
+            <ArrowRight className='hover:text-branco' />
           </button>
         </Link>
       </div>

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import MenuItemSvg from './MenuItemSvg';
-
+import { Search } from 'lucide-react'
 import { Menu } from '../Menu/Menu';
-import Search from '../../../assets/Navbar/search.png'
 import { ModalSearch } from './ModalSearch';
 
 
@@ -15,7 +14,7 @@ export function Navbar () {
 
       <div className='flex items-center gap-8'>
         <button onClick={() => setShowSearch(true)} className='hidden md:flex'>
-          <img src={Search} className='p-3 hover:bg-cinza-800/40 rounded-full scale-90' />
+          <Search className='w-[18px] rounded-full' />
         </button>
         <button onClick={() => setShowMenu(true)} className='lg:hidden'>
           <MenuItemSvg />
