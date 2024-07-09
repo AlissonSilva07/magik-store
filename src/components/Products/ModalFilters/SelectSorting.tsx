@@ -12,6 +12,7 @@ export function SelectSorting({ sorting, setInputChecked }: IRadioCategoryProps)
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);
+        setInputChecked(option)
     };
 
     return (

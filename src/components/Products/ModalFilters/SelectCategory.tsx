@@ -1,5 +1,5 @@
 import React from "react";
-import { ChangeEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export interface IRadioCategoryProps {
     categories: string[]
@@ -13,6 +13,7 @@ export function SelectCategory({ categories, setInputChecked }: IRadioCategoryPr
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);
+        setInputChecked(option)
     };
 
     return (
