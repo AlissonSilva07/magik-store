@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "../../@types/Product";
 import { useApi } from "../../hooks/useApi";
-import { ProductCard } from "../Home/ProductCard";
+import { ProductCard } from "../ProductCard";
 import { ProductsPagination } from "./ProductsPagination";
 
 export interface IProductsListProps {
@@ -32,7 +32,7 @@ export function ProductsList () {
       <p className="text-center md:text-start lg:py-2 text-2xl font-bold">Showing: All Products</p>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-4">
         {currentItems && currentItems.map(p => (
-            <ProductCard product={p} key={p.id} />
+            <ProductCard product={p} key={p.id} btnSize="full" />
         ))}
       </div>
       {products.length > 0 && <ProductsPagination current={current} setCurrent={setCurrent} itemsPerPage={itemsPerPage} playlistLength={playlistLength} />}

@@ -32,7 +32,7 @@ export function SidebarFilters () {
             <div className='flex flex-col gap-4'>
               <div className='w-full flex flex-col gap-4'>
                 <p className='font-bold'>Category</p>
-                <SelectCategory categories={categories} setInputChecked={(option: string) => { }} />
+                <SelectCategory categories={categories} setInputChecked={() => { }} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>

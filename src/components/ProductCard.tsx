@@ -1,14 +1,26 @@
-import { Product } from "../../@types/Product";
+import { Product } from "../@types/Product";
 import { ArrowRight, ShoppingCartIcon, Star } from 'lucide-react'
+import { tv } from "tailwind-variants";
 
 export interface IProductCardProps {
     product: Product
+    btnSize: "full" | "fixed" | undefined
 }
 
-export function ProductCard ({ product }: IProductCardProps) {
+const card = tv({
+  base: 'flex flex-col p-3 gap-3 shrink-0 border border-cinza-border/20 rounded-lg',
+  variants: {
+    size: {
+      full: 'w-full h-full',
+      fixed: 'w-[336px] min-w-[336px]'
+    }
+  }
+})
+
+export function ProductCard ({ product, btnSize }: IProductCardProps) {
   return (
-    <div className="w-[336px] min-w-[336px] flex flex-col p-3 gap-3 shrink-0 border border-cinza-border/20 rounded-lg">
-      <img src={product.image} alt={product.title} className="h-[335px] w-full object-contain" />
+    <div className={card({ size: btnSize })}>
+      <img src={product.image} alt={product.title} className='h-[240px] w-full object-contain' />
       <div className="flex flex-col p-3 gap-3">
         <p className="h-8 text-xl font-bold line-clamp-2">{product.title}</p>
         <div className="w-full flex items-center gap-4">

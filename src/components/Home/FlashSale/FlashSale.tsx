@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useApi } from "../../../hooks/useApi";
 import { FlashSaleSelector } from "./FlashSaleSelector";
 import { Product } from "../../../@types/Product";
-import { ProductCard } from "../ProductCard";
+import { ProductCard } from "../../ProductCard";
 
 export function FlashSale () {
     const {categories, getProducts} = useApi()
@@ -34,7 +34,7 @@ export function FlashSale () {
         <FlashSaleSelector categories={categories} handleCategory={handleCategory} />
         <div ref={productsRef} className="w-full flex items-center lg:justify-center gap-8 lg:gap-16 overflow-x-scroll lg:overflow-hidden scroll-smooth">
             {filteredProducts && filteredProducts.map(p => (
-                <ProductCard product={p} key={p.id} />
+                <ProductCard product={p} key={p.id} btnSize="fixed" />
             ))}
         </div>
         <div>
