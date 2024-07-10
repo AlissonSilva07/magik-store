@@ -23,7 +23,7 @@ export function SidebarFilters () {
     })
 
   return (
-    <div className='hidden md:w-1/5 lg:flex flex-col bg-branco border-r z-30'>
+    <div className='hidden md:w-1/5 lg:flex flex-col bg-branco border-r border-cinza-border/20 z-30'>
         <div className='w-full h-20 p-4 md:p-8 bg-preto text-branco flex items-center justify-between'>
           <p className='text-xl font-bold'>Filter Results</p>
         </div>

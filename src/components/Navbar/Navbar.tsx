@@ -8,7 +8,7 @@ export function Navbar () {
     const [ showMenu, setShowMenu ] = useState<boolean>(false)
     const [ showSearch, setShowSearch ] = useState<boolean>(false)
   return (
-    <nav className='fixed top-0 right-0 left-0 h-20 bg-white px-4 md:px-8 bg-branco flex items-center justify-between border-b border-preto z-40'>
+    <nav className='fixed top-0 right-0 left-0 h-20 bg-white px-4 md:px-8 bg-branco flex items-center justify-between border-b border-cinza-border/20 z-40'>
       <p className='text-2xl font-black'>MAGIK!</p>
 
       <div className='flex items-center gap-8'>
@@ -23,7 +23,7 @@ export function Navbar () {
           <a href="#" className='hover:font-medium'>Products</a>
           <a href="#" className='hover:font-medium'>Cart (0)</a>
         </div>
-        <div className='hidden lg:block w-[1px] h-8 bg-preto'></div>
+        <div className='hidden lg:flex w-[1px] h-8 bg-preto'></div>
         <a href="#" className='hidden lg:flex hover:font-medium'>Login / Register</a>
       </div>
 

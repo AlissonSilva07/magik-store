@@ -20,12 +20,12 @@ export function Menu ({ showMenu, onCloseMenu }: IMenuProps) {
 
           <div className='w-full p-4 md:p-8 md:hidden'>
               <div className='relative'>
-                  <input type="text" placeholder='Search' className='w-full p-3 bg-white border border-preto rounded-full' />
+                  <input type="text" placeholder='Search' className='w-full p-3 bg-white border border-cinza-border/20 rounded-full' />
                   <SearchSvg className='absolute right-2 p-4 md:p-8' />
               </div>
           </div>
 
-          <div className='p-4 md:p-8 flex flex-col gap-4 border-b border-preto'>
+          <div className='p-4 md:p-8 flex flex-col gap-4 border-b border-cinza-border/20'>
             <Link to='/' onClick={onCloseMenu}>Home</Link>
             <a href="#">Products</a>
             <a href="#">Cart (0)</a>

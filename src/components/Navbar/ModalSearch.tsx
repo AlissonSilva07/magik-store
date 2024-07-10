@@ -12,7 +12,7 @@ export function ModalSearch ({ showSearch, onCloseSearch }: IModalSearchProps) {
             <p>Search for items:</p>
             <div className='w-full'>
               <div className='relative'>
-                  <input type="text" placeholder='Search' className='w-full p-3 bg-white border border-preto rounded-full' />
+                  <input type="text" placeholder='Search' className='w-full p-3 bg-white border border-cinza-border/20 rounded-full' />
                   <SearchSvg className='absolute right-2 p-4' />
               </div>
             </div>
