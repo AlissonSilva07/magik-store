@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: 'Plus Jakarta Sans'
+      },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
