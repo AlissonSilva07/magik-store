@@ -35,6 +35,7 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
 
   const resetFilter = () => {
     removeFilter()
+    handleCloseFilters()
     window.location.reload()
   }
 

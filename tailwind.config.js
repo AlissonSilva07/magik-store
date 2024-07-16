@@ -19,7 +19,7 @@ export default {
     colors: {
       'branco': '#ffffff',
       'preto': '#000000',
-      'roxo': '#802C6E',
+      'roxo': '#590D82',
       'cinza-800': '#71717A',
       'cinza-100': '#CACACA',
       'cinza-border': '#0f172a'
