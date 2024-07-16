@@ -13,12 +13,12 @@ export interface IModalFiltersProps {
 
 export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
   const { categories } = useApi()
-  const { filter, updateFilter, removeFilter } = useContext(ProductContext)
+  const { filter, filterCounter, updateFilter, removeFilter } = useContext(ProductContext)
 
-  const [categoryFilter, setCategoryFilter] = useState<string>('')
-  const [sortingFilter, setSortingFilter] = useState<string>('')
-  const [maxFilter, setMaxFilter] = useState<string | number | readonly string[] | undefined>(undefined)
-  const [minFilter, setMinFilter] = useState<string | number | readonly string[] | undefined>(undefined)
+  const [categoryFilter, setCategoryFilter] = useState<string>(filter ? filter.category : '')
+  const [sortingFilter, setSortingFilter] = useState<string>(filter ? filter.sort_by : '')
+  const [maxFilter, setMaxFilter] = useState<string | number | readonly string[] | undefined>(filter ? filter.price.max : undefined)
+  const [minFilter, setMinFilter] = useState<string | number | readonly string[] | undefined>(filter ? filter.price.min : undefined)
 
   const setFilters = () => {
     updateFilter({
@@ -52,11 +52,11 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
             <div className='flex flex-col gap-4'>
               <div className='w-full flex flex-col gap-4'>
                 <p className='font-bold'>Category</p>
-                <SelectCategory categories={categories} setCategoryFilter={setCategoryFilter} />
+                <SelectCategory categories={categories} filterCategory={filter.category} setCategoryFilter={setCategoryFilter} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>
-                <SelectSorting sorting={sorting} setSortingFilter={setSortingFilter} />
+                <SelectSorting sorting={sorting} filterSort={filter.sort_by} setSortingFilter={setSortingFilter} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>

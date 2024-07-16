@@ -2,13 +2,14 @@ import React from "react";
 import { useState } from "react";
 
 export interface IRadioCategoryProps {
+    filterSort: string,
     sorting: string[]
     setSortingFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function SelectSorting({ sorting, setSortingFilter }: IRadioCategoryProps) {
+export function SelectSorting({ filterSort, sorting, setSortingFilter }: IRadioCategoryProps) {
 
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [selectedOption, setSelectedOption] = useState<string | null>(filterSort ? filterSort : '');
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);

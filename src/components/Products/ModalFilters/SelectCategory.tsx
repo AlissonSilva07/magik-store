@@ -2,14 +2,15 @@ import React from "react";
 import { useRef, useState } from "react";
 
 export interface IRadioCategoryProps {
+    filterCategory: string
     categories: string[]
     setCategoryFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function SelectCategory({ categories, setCategoryFilter }: IRadioCategoryProps) {
+export function SelectCategory({ filterCategory, categories, setCategoryFilter }: IRadioCategoryProps) {
     const categoriesRef = useRef(null);
 
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [selectedOption, setSelectedOption] = useState<string | null>(filterCategory ? filterCategory : '');
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);
