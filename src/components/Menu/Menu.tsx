@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react'
 import SearchSvg from '../Navbar/SearchSvg';
+import { Logo } from '../Navbar/Logo';
 
 export interface IMenuProps {
     showMenu: boolean
@@ -37,7 +38,7 @@ export function Menu ({ showMenu, onCloseMenu }: IMenuProps) {
         </div>
 
         <div className='flex p-4 md:p-8 items-center justify-center'>
-          <p className='text-2xl font-black'>MAGIK!</p>
+          <Logo height={12} />
         </div>
       </div>
   );

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Search, MenuIcon } from 'lucide-react'
 import { Menu } from '../Menu/Menu';
 import { ModalSearch } from './ModalSearch';
-import Logo from '../../assets/logo.png'
+import { Logo } from './Logo';
 
 
 export function Navbar () {
@@ -10,7 +10,7 @@ export function Navbar () {
     const [ showSearch, setShowSearch ] = useState<boolean>(false)
   return (
     <nav className='fixed top-0 right-0 left-0 h-20 bg-white px-4 md:px-8 bg-branco flex items-center justify-between border-b border-cinza-border/20 z-40'>
-      <img src={Logo} alt="logo" className='h-12' />
+      <Logo height={12} />
 
       <div className='h-full flex items-center gap-8'>
         <button onClick={() => setShowSearch(true)} className='hidden md:flex'>

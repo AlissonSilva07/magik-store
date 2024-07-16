@@ -14,13 +14,6 @@ export function Products () {
 
     const [products, setProducts] = useState<Product[]>([])
 
-    useEffect(() => {
-        getProducts().then(data => {
-            setProducts(data)
-        })
-            .catch(err => console.error(err))
-    }, [])
-
     // FILTERS        
     const [showFilters, setShowFilters] = useState<boolean>(false)
 
@@ -35,6 +28,13 @@ export function Products () {
     const { filter } = useContext(ProductContext)
 
     const filteredProducts = applyFilters(products, filter)
+
+    useEffect(() => {
+        getProducts().then(data => {
+            setProducts(data)
+        })
+            .catch(err => console.error(err))
+    }, [])
 
   return (
     <>
