@@ -30,6 +30,7 @@ export function SelectSorting({ sorting, setSortingFilter }: IRadioCategoryProps
                     />
                     <label
                         htmlFor={option}
+                        onTouchStart={() => handleOptionChange(option)}
                         className={`button ${option === selectedOption ? 'bg-roxo text-branco border border-roxo' : 'bg-branco text-cinza-800 border border-x-cinza-800 hover:text-preto hover:border-preto'} p-3 flex items-center justify-center rounded-md cursor-pointer`}
                     >
                         {option}

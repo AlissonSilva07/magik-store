@@ -17,7 +17,7 @@ export function SelectCategory({ categories, setCategoryFilter }: IRadioCategory
     };
 
     return (
-        <div ref={categoriesRef} className="flex items-center gap-4 overflow-x-scroll">
+        <div ref={categoriesRef} className="flex items-center gap-8 overflow-x-scroll">
             {categories.map((option) => (
                 <React.Fragment key={option}>
                     <input
@@ -31,7 +31,8 @@ export function SelectCategory({ categories, setCategoryFilter }: IRadioCategory
                     />
                     <label
                         htmlFor={option}
-                        className={`button ${option === selectedOption ? 'bg-roxo text-branco hover:bg-roxo hover:text-branco' : 'bg-branco text-cinza-800 hover:text-preto'} shrink-0 px-3 py-1 flex items-center justify-center rounded-full cursor-pointer`}
+                        onTouchStart={() => handleOptionChange(option)}
+                        className={`button ${option === selectedOption ? 'bg-roxo text-branco hover:bg-roxo hover:text-branco' : 'bg-branco text-cinza-800 lg:hover:text-preto'} shrink-0 px-3 py-1 flex items-center justify-center rounded-full cursor-pointer`}
                     >
                         {option}
                     </label>
