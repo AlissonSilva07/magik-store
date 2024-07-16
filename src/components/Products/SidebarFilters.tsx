@@ -5,6 +5,7 @@ import { SelectSorting } from '../Products/ModalFilters/SelectSorting';
 import { sorting } from '../../utils/sorting';
 import { useContext, useState } from 'react';
 import { ProductContext } from '../../context/product-context';
+import { Filter } from 'lucide-react';
 
 export interface ISidebarFiltersProps {
 }
@@ -39,6 +40,12 @@ export function SidebarFilters() {
     <div className='hidden md:w-1/5 lg:flex flex-col bg-branco border-r border-cinza-border/20 z-30'>
       <div className='w-full h-20 p-4 md:p-8 bg-preto text-branco flex items-center justify-between'>
         <p className='text-xl font-bold'>Filter Results</p>
+        {filterCounter > 0 ? (
+          <span className='h-6 w-6 flex flex-col items-center justify-center bg-branco text-preto rounded-full'>
+            {filterCounter}
+          </span>) :
+          <Filter className='size-5 text-branco font-bold' />
+        }
       </div>
       <div className='h-full m-4 md:m-8 flex flex-col gap-8'>
         <div>
