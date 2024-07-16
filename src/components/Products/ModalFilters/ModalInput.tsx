@@ -1,5 +1,3 @@
-import { ChangeEvent } from "react";
-
 export interface IModalInputProps {
   placeholder: string
   maxFilter: string | number | readonly string[] | undefined
@@ -10,13 +8,6 @@ export interface IModalInputProps {
 }
 
 export function ModalInput({ placeholder, maxFilter, minFilter, setMinFilter, setMaxFilter, type }: IModalInputProps) {
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    type === 'min' ? setMinFilter(Number(e.target.value)) :
-      type === 'max' ? setMaxFilter(Number(e.target.value)) :
-        null
-  }
-
   return (
     <input
       type="number"
@@ -25,8 +16,13 @@ export function ModalInput({ placeholder, maxFilter, minFilter, setMinFilter, se
       placeholder={placeholder}
       value={
         type === 'min' ? minFilter :
-        type === 'max' ? maxFilter :
-        undefined}
-      onChange={e => handleChange(e)} className="w-full p-3 text-cinza-800 border border-cinza-800 rounded-lg" />
+          type === 'max' ? maxFilter :
+            undefined}
+      onChange={e => {
+        type === 'min' ? setMinFilter(Number(e.target.value)) :
+          type === 'max' ? setMaxFilter(Number(e.target.value)) :
+            null
+      }}
+      className="w-full p-3 text-cinza-800 border border-cinza-800 rounded-lg" />
   );
 }

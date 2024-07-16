@@ -14,7 +14,7 @@ interface ProductProviderProps {
     children: React.ReactNode
 }
 
-export const ProductContext = createContext<ProductContextType | null>(null)
+export const ProductContext = createContext<ProductContextType | undefined>(undefined)
 
 const ProductProvider = ({ children }: ProductProviderProps) => {   
 

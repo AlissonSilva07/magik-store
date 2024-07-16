@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { X } from 'lucide-react'
-import SearchSvg from '../Navbar/SearchSvg';
+import { Search, X } from 'lucide-react'
 import { Logo } from '../Navbar/Logo';
 
 export interface IMenuProps {
@@ -22,7 +21,7 @@ export function Menu ({ showMenu, onCloseMenu }: IMenuProps) {
           <div className='w-full p-4 md:p-8 md:hidden'>
               <div className='relative'>
                   <input type="text" placeholder='Search' className='w-full p-3 bg-white border border-cinza-border/20 rounded-full' />
-                  <SearchSvg className='absolute right-2 p-4 md:p-8' />
+                  <Search className='absolute right-2 p-4 md:p-8' />
               </div>
           </div>
 

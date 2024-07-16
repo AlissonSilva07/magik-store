@@ -12,7 +12,7 @@ export interface IProductsListProps {
 export function ProductsList ({ products, filter }: IProductsListProps) {
     
 
-    const itemsPerPage = 10
+    const itemsPerPage = 8
     const playlistLength: number | undefined = products?.length
     const [ current, setCurrent ] = useState<number>(1)
 
@@ -29,7 +29,7 @@ export function ProductsList ({ products, filter }: IProductsListProps) {
             <ProductCard product={p} key={p.id} btnSize="full" />
         ))}
       </div>
-      {products.length > 0 && <ProductsPagination current={current} setCurrent={setCurrent} itemsPerPage={itemsPerPage} playlistLength={playlistLength} />}
+      {products.length > 8 && <ProductsPagination current={current} setCurrent={setCurrent} itemsPerPage={itemsPerPage} playlistLength={playlistLength} />}
     </section>
   );
 }
