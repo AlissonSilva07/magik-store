@@ -3,16 +3,16 @@ import { useState } from "react";
 
 export interface IRadioCategoryProps {
     sorting: string[]
-    setInputChecked: (option: string) => void
+    setSortingFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function SelectSorting({ sorting, setInputChecked }: IRadioCategoryProps) {
+export function SelectSorting({ sorting, setSortingFilter }: IRadioCategoryProps) {
 
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);
-        setInputChecked(option)
+        setSortingFilter(option)
     };
 
     return (

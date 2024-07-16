@@ -3,17 +3,17 @@ import { useRef, useState } from "react";
 
 export interface IRadioCategoryProps {
     categories: string[]
-    setInputChecked: (option: string) => void
+    setCategoryFilter: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function SelectCategory({ categories, setInputChecked }: IRadioCategoryProps) {
+export function SelectCategory({ categories, setCategoryFilter }: IRadioCategoryProps) {
     const categoriesRef = useRef(null);
 
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);
-        setInputChecked(option)
+        setCategoryFilter(option)
     };
 
     return (

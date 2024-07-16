@@ -1,8 +1,11 @@
 import { X } from 'lucide-react'
 import { useApi } from '../../../hooks/useApi';
-import { ModalInput } from './ModalInput';
 import { SelectCategory } from './SelectCategory';
 import { SelectSorting } from './SelectSorting';
+import { sorting } from '../../../utils/sorting';
+import { useContext, useEffect, useState } from 'react';
+import { ProductContext } from '../../../context/product-context';
+import { ModalInput } from './ModalInput';
 
 export interface IModalFiltersProps {
   handleCloseFilters: () => void
@@ -10,7 +13,31 @@ export interface IModalFiltersProps {
 
 export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
   const { categories } = useApi()
-  const sorting: string[] = ['Popularity', 'Newest', 'Oldest', 'A-Z', 'Z-A', 'High Price', 'Low Price']
+  const { filter, updateFilter, removeFilter } = useContext(ProductContext)
+
+  const [categoryFilter, setCategoryFilter] = useState<string>('')
+  const [sortingFilter, setSortingFilter] = useState<string>('')
+  const [maxFilter, setMaxFilter] = useState<string | number | readonly string[] | undefined>(undefined)
+  const [minFilter, setMinFilter] = useState<string | number | readonly string[] | undefined>(undefined)
+
+  const setFilters = () => {
+    updateFilter({
+      category: categoryFilter,
+      sort_by: sortingFilter,
+      price: {
+        min: minFilter,
+        max: maxFilter
+      }
+    })
+
+    handleCloseFilters()
+  }
+
+  const resetFilter = () => {
+    removeFilter()
+    window.location.reload()
+  }
+
 
   return (
     <div className='fixed top-0 right-0 bottom-0 left-0 bg-preto/30 z-40'>
@@ -24,25 +51,30 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
             <div className='flex flex-col gap-4'>
               <div className='w-full flex flex-col gap-4'>
                 <p className='font-bold'>Category</p>
-                <SelectCategory categories={categories} setInputChecked={() => { }} />
+                <SelectCategory categories={categories} setCategoryFilter={setCategoryFilter} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>
-                <SelectSorting sorting={sorting} setInputChecked={() => { }} />
+                <SelectSorting sorting={sorting} setSortingFilter={setSortingFilter} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>
                 <div className='flex items-center gap-3'>
-                  <ModalInput placeholder='Min Price' />
-                  <ModalInput placeholder='Max Price' />
+                  <ModalInput placeholder='Max' type='min' maxFilter={maxFilter} minFilter={minFilter} setMinFilter={setMinFilter} setMaxFilter={setMaxFilter} />
+                  <ModalInput placeholder='Max' type='max' maxFilter={maxFilter} minFilter={minFilter} setMinFilter={setMinFilter} setMaxFilter={setMaxFilter} />
                 </div>
               </div>
             </div>
           </div>
 
-          <button className='w-full p-3 bg-roxo text-branco hover:bg-roxo/80 rounded-lg'>
-            Apply Filters
-          </button>
+          <div className='space-y-4'>
+            <button onClick={setFilters} className='w-full p-3 bg-roxo text-branco hover:bg-roxo/80 rounded-lg'>
+              Apply Filters
+            </button>
+            <button onClick={resetFilter} className='w-full p-3 bg-white text-cinza-100 border border-cinza-100 hover:text-preto hover:border-preto rounded-lg'>
+              Remove Filters
+            </button>
+          </div>
         </div>
       </div>
     </div>

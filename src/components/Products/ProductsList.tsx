@@ -1,22 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Product } from "../../@types/Product";
-import { useApi } from "../../hooks/useApi";
 import { ProductCard } from "../ProductCard";
 import { ProductsPagination } from "./ProductsPagination";
 
 export interface IProductsListProps {
+  products: Product[]
 }
 
-export function ProductsList () {
-    const {getProducts} = useApi()
-    const [products, setProducts] = useState<Product[]>([])
-
-    useEffect(() => {
-        getProducts().then(data => {
-            setProducts(data)
-        })
-        .catch(err => console.error(err))
-    }, [])
+export function ProductsList ({ products }: IProductsListProps) {
+    
 
     const itemsPerPage = 10
     const playlistLength: number | undefined = products?.length
