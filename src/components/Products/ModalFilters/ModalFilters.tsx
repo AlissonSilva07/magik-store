@@ -3,7 +3,7 @@ import { useApi } from '../../../hooks/useApi';
 import { SelectCategory } from './SelectCategory';
 import { SelectSorting } from './SelectSorting';
 import { sorting } from '../../../utils/sorting';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ProductContext } from '../../../context/product-context';
 import { ModalInput } from './ModalInput';
 
@@ -39,9 +39,17 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
     window.location.reload()
   }
 
+  const modalRef = useRef<HTMLDivElement>(null)
+
+  const handleClickAway = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if(modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      handleCloseFilters()
+    }
+  }
+
   return (
-    <div className='fixed top-0 right-0 bottom-0 left-0 bg-preto/30 z-40'>
-      <div className='fixed top-0 left-0 bottom-0 right-0 md:w-1/2 md:translate-x-full md:shadow-lg flex flex-col bg-branco z-50'>
+    <div onClick={e => handleClickAway(e)} className='fixed top-0 right-0 bottom-0 left-0 bg-preto/30 z-40'>
+      <div ref={modalRef} className='fixed top-0 left-0 bottom-0 right-0 md:w-1/2 md:translate-x-full md:shadow-lg flex flex-col bg-branco z-50'>
         <div onClick={handleCloseFilters} className='w-full h-20 p-4 md:p-8 bg-preto text-branco flex items-center justify-between'>
           <p className='text-2xl font-bold'>Filter Results</p>
           <X className='text-branco' />
