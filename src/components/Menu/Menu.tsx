@@ -40,7 +40,7 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
   }, [])
 
   return (
-    <div onClick={e => handleClickAway(e)} className={`${showMenu ? 'fixed' : 'hidden'} top-0 right-0 bottom-0 left-0 bg-preto/30 z-40`}>
+    <div onClick={e => handleClickAway(e)} className={`${showMenu ? 'fixed' : 'hidden'} top-0 right-0 bottom-0 left-0 bg-preto/40 z-40`}>
       <div ref={modalRef} className='fixed top-0 left-0 bottom-0 right-0 md:w-1/2 md:translate-x-full md:shadow-lg flex flex-col justify-between bg-branco z-50'>
         <div>
           <div className='h-20 px-4 md:px-8 flex items-center justify-between bg-preto text-branco'>
