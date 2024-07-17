@@ -14,7 +14,7 @@ export function Navbar () {
 
       <div className='h-full flex items-center gap-8'>
         <button onClick={() => setShowSearch(true)} className='hidden md:flex'>
-          <Search className='w-[18px] rounded-full' />
+          <Search className='size-5 rounded-full' />
         </button>
         <button onClick={() => setShowMenu(true)} className='lg:hidden'>
           <MenuIcon />
