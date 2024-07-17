@@ -5,7 +5,7 @@ import { ModalFilters } from '../components/Products/ModalFilters/ModalFilters';
 import { SidebarFilters } from '../components/Products/SidebarFilters';
 import { Product } from '../@types/Product';
 import { useApi } from '../hooks/useApi';
-import { applyFilters } from '../utils/applyFilters';
+import { applyFilters } from '../utils/apply-filters';
 import { ProductContext } from '../context/product-context';
 
 export function Products () {
