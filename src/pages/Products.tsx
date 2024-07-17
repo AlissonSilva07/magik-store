@@ -13,6 +13,7 @@ export function Products () {
     const { getProducts } = useApi()
 
     const [products, setProducts] = useState<Product[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
 
     // FILTERS        
     const [showFilters, setShowFilters] = useState<boolean>(false)
@@ -30,8 +31,10 @@ export function Products () {
     const filteredProducts = applyFilters(products, filter)
 
     useEffect(() => {
+        setLoading(true)
         getProducts().then(data => {
             setProducts(data)
+            setLoading(false)
         })
             .catch(err => console.error(err))
     }, [])
@@ -41,7 +44,7 @@ export function Products () {
         <main className='pt-20 m-4 lg:m-0 md:m-8 flex flex-col lg:flex-row gap-4 md:gap-8 lg:gap-0'>
             <ProductsFilter openFilters={handleOpenFilters} />
             <SidebarFilters />
-            <ProductsList filter={filter} products={filteredProducts} />
+            <ProductsList loading={loading} filter={filter} products={filteredProducts} />
         </main>
 
         {showFilters && <ModalFilters handleCloseFilters={handleCloseFilters} />}
