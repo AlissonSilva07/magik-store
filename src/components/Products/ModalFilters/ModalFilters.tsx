@@ -12,8 +12,10 @@ export interface IModalFiltersProps {
 }
 
 export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
-  const { categories } = useApi()
-  const { filter, filterCounter, updateFilter, removeFilter } = useContext(ProductContext)
+  const { getCategories } = useApi()
+  const [categories, setCategories] = useState<string[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const { filter, updateFilter, removeFilter } = useContext(ProductContext)
 
   const [categoryFilter, setCategoryFilter] = useState<string>(filter ? filter.category : '')
   const [sortingFilter, setSortingFilter] = useState<string>(filter ? filter.sort_by : '')
@@ -47,6 +49,13 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
     }
   }
 
+  useEffect(() => {
+    getCategories().then(data => {
+      setCategories(data)
+      setLoading(false)
+    }).catch(err => console.error(err))
+  })
+
   return (
     <div onClick={e => handleClickAway(e)} className='fixed top-0 right-0 bottom-0 left-0 bg-preto/30 z-40'>
       <div ref={modalRef} className='fixed top-0 left-0 bottom-0 right-0 md:w-1/2 md:translate-x-full md:shadow-lg flex flex-col bg-branco z-50'>
@@ -59,7 +68,7 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
             <div className='flex flex-col gap-4'>
               <div className='w-full flex flex-col gap-4'>
                 <p className='font-bold'>Category</p>
-                <SelectCategory categories={categories} filterCategory={filter.category} setCategoryFilter={setCategoryFilter} />
+                <SelectCategory loading={loading} categories={categories} filterCategory={filter.category} setCategoryFilter={setCategoryFilter} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>

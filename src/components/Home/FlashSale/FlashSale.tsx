@@ -27,7 +27,7 @@ export function FlashSale() {
     const filteredProducts = useMemo(() => {
         return products?.filter(i => {
             return i.category.toLocaleLowerCase().includes(category.toLowerCase())
-        }).slice(0, 3)
+        }).slice(0, 4)
     }, [products, category])
 
     const productsRef = useRef(null);
@@ -43,6 +43,7 @@ export function FlashSale() {
                     ))
                 ) : (
                     <>
+                        <ProductCardSkeleton btnSize="fixed" />
                         <ProductCardSkeleton btnSize="fixed" />
                         <ProductCardSkeleton btnSize="fixed" />
                         <ProductCardSkeleton btnSize="fixed" />

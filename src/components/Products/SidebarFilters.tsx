@@ -3,7 +3,7 @@ import { ModalInput } from './ModalFilters/ModalInput';
 import { SelectCategory } from '../Products/ModalFilters/SelectCategory';
 import { SelectSorting } from '../Products/ModalFilters/SelectSorting';
 import { sorting } from '../../utils/sorting';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../../context/product-context';
 import { Filter } from 'lucide-react';
 
@@ -11,7 +11,9 @@ export interface ISidebarFiltersProps {
 }
 
 export function SidebarFilters() {
-  const { categories } = useApi()
+  const { getCategories } = useApi()
+  const [categories, setCategories] = useState<string[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
   const { filter, filterCounter, updateFilter, removeFilter } = useContext(ProductContext)
 
   const [categoryFilter, setCategoryFilter] = useState<string>(filter ? filter.category : '')
@@ -36,6 +38,13 @@ export function SidebarFilters() {
     window.location.reload()
   }
 
+  useEffect(() => {
+    getCategories().then(data => {
+      setCategories(data)
+      setLoading(false)
+    }).catch(err => console.error(err))
+  })
+
   return (
     <div className='hidden md:w-1/5 lg:flex flex-col bg-branco border-r border-cinza-border/20 z-30'>
       <div className='w-full h-20 p-4 md:p-8 bg-preto text-branco flex items-center justify-between'>
@@ -52,7 +61,7 @@ export function SidebarFilters() {
           <div className='flex flex-col gap-4'>
             <div className='w-full flex flex-col gap-4'>
               <p className='font-bold'>Category</p>
-              <SelectCategory categories={categories} filterCategory={filter.category} setCategoryFilter={setCategoryFilter} />
+              <SelectCategory loading={loading} categories={categories} filterCategory={filter.category} setCategoryFilter={setCategoryFilter} />
             </div>
             <div className='flex flex-col gap-4'>
               <p className='font-bold'>Sort By</p>
