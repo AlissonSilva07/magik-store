@@ -2,7 +2,7 @@ import { useApi } from '../../hooks/useApi';
 import { ModalInput } from './ModalFilters/ModalInput';
 import { SelectCategory } from '../Products/ModalFilters/SelectCategory';
 import { SelectSorting } from '../Products/ModalFilters/SelectSorting';
-import { sorting } from '../../utils/sorting';
+import { sorting } from '../../utils/static-data';
 import { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../../context/product-context';
 import { Filter } from 'lucide-react';

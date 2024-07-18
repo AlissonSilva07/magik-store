@@ -13,5 +13,11 @@ export const useApi = () => {
         return resp
     }
 
-    return {getCategories, getProducts}
+    const getProductById = async (id: string | undefined): Promise<Product> => {
+        const data = await fetch(`https://fakestoreapi.com/products/${id}`)
+        const resp = await data.json()
+        return resp
+    }
+
+    return {getCategories, getProducts, getProductById}
 }

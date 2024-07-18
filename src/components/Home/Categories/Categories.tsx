@@ -15,7 +15,6 @@ export function Categories() {
     }).catch(err => console.error(err))
   })
 
-
   return (
     <section className="w-full p-4 md:p-8 flex flex-col items-center gap-4 md:gap-8 lg:p-16">
       <h2 className="text-4xl font-bold">SHOP BY CATEGORY</h2>

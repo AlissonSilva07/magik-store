@@ -2,7 +2,7 @@ import { X } from 'lucide-react'
 import { useApi } from '../../../hooks/useApi';
 import { SelectCategory } from './SelectCategory';
 import { SelectSorting } from './SelectSorting';
-import { sorting } from '../../../utils/sorting';
+import { sorting } from '../../../utils/static-data';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { ProductContext } from '../../../context/product-context';
 import { ModalInput } from './ModalInput';
