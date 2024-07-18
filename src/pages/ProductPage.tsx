@@ -18,7 +18,7 @@ export function ProductPage() {
     getProductById(productID).then(data => {
       console.log(data)
     }).catch(err => console.error(err))
-  }, [])
+  }, [product])
 
   return (
     <main className="pt-20 flex flex-col items-center gap-4">

@@ -43,7 +43,7 @@ export function SidebarFilters() {
       setCategories(data)
       setLoading(false)
     }).catch(err => console.error(err))
-  })
+  }, [])
 
   return (
     <div className='hidden md:w-1/5 lg:flex flex-col bg-branco border-r border-cinza-border/20 z-30'>

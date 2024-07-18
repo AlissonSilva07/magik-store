@@ -6,8 +6,9 @@ import { ProductCard } from "../../ProductCard";
 import { ProductCardSkeleton } from "../../Skeletons/ProductCardSkeleton";
 
 export function FlashSale() {
-    const { categories, getProducts } = useApi()
+    const { getCategories, getProducts } = useApi()
     const [products, setProducts] = useState<Product[]>([])
+    const [categories, setCategories] = useState<string[]>([])
     const [category, setCategory] = useState<string>('electronics')
     const [loading, setLoading] = useState<boolean>(false)
 
@@ -16,8 +17,12 @@ export function FlashSale() {
         getProducts().then(data => {
             setProducts(data)
             setLoading(false)
-        })
-            .catch(err => console.error(err))
+        }).catch(err => console.error(err))
+
+        getCategories().then(data => {
+            setCategories(data)
+            setLoading(false)
+        }).catch(err => console.error(err))
     }, [])
 
     const handleCategory = (category: string): void => {
