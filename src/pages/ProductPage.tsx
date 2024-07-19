@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useApi } from "../hooks/useApi";
 import { Product } from "../@types/Product";
-import { ArrowLeft, ChevronLeft, ExternalLink, Star } from "lucide-react";
+import { ChevronLeft, ExternalLink, Star } from "lucide-react";
 import { ProductSectionStyle } from "../components/Product/ProductSectionStyle";
 import { ProductHeader } from "../components/Product/ProductHeader";
 import { ProductRelatedItem } from "../components/Product/ProductRelatedItem";

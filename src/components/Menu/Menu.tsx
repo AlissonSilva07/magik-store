@@ -52,8 +52,8 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
 
           <div className='p-4 md:p-8 flex flex-col gap-4 border-b border-cinza-border/20'>
             <Link to='/' onClick={onCloseMenu}>Home</Link>
-            <a href="#">Products</a>
-            <a href="#">Cart (0)</a>
+            <Link to='/products' onClick={onCloseMenu}>Products</Link>
+            <Link to='/' onClick={onCloseMenu}>Cart (0)</Link>
           </div>
 
           <div className='p-4 md:p-8 '>
