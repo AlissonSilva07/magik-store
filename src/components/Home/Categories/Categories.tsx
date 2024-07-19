@@ -16,7 +16,7 @@ export function Categories() {
   }, [])
 
   return (
-    <section className="w-full p-4 md:p-8 flex flex-col items-center gap-4 md:gap-8 lg:p-16">
+    <section className="w-full p-4 md:p-8 flex flex-col items-center gap-4 md:gap-8">
       <h2 className="text-4xl font-bold">SHOP BY CATEGORY</h2>
       <div className="w-full flex flex-col lg:flex-row items-center gap-4">
         {!loading ?
