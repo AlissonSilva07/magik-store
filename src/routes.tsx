@@ -13,7 +13,7 @@ export function AppRoutes() {
                     <Route path="/" element={<BaseLayout />}>
                         <Route index element={<Home />} />
                         <Route path="products" element={<Products />} />
-                        <Route path="products/:productID" element={<ProductPage />} />
+                        <Route path="products/:productId" element={<ProductPage />} />
                     </Route>
                 </Routes>
             </ProductProvider>

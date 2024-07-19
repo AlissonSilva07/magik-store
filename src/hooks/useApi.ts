@@ -19,5 +19,5 @@ export const useApi = () => {
         return resp
     }
 
-    return {getCategories, getProducts, getProductById}
+    return { getCategories, getProducts, getProductById }
 }
