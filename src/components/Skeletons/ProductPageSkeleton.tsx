@@ -1,7 +1,7 @@
 export function ProductPageSkeleton() {
     return (
         <main className="w-full animate-pulse">
-            <div className="flex flex-col items-center gap-4 md:gap-8">
+            <div className="flex flex-col items-center">
                 <div className="sticky top-20 w-full lg:hidden">
                     <div className="w-full bg-preto flex items-center p-4 md:px-8 gap-4 md:gap-8">
                         <div className="h-10 w-full bg-cinza-border/20 rounded-md"></div>

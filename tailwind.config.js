@@ -22,7 +22,8 @@ export default {
       'roxo': '#590D82',
       'cinza-800': '#71717A',
       'cinza-100': '#CACACA',
-      'cinza-border': '#0f172a'
+      'cinza-border': '#0f172a',
+      'amarelo': '#FDE047'
     }
   },
   plugins: [],
