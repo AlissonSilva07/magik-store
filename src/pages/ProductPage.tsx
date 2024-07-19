@@ -21,12 +21,11 @@ export function ProductPage() {
   useEffect(() => {
     setLoading(true)
     getProductById(productId).then(data => {
-      setLoading(false)
+      //setLoading(false)
       setProduct(data)
     }).catch(err => console.error(err))
 
     getProducts().then(data => {
-      setLoading(false)
       setRelatedProducts(data)
     }).catch(err => console.error(err))
   }, [])
@@ -37,7 +36,7 @@ export function ProductPage() {
         <ProductPageSkeleton />
       ) :
         product && (
-          <div key={product.id} className="flex flex-col items-center gap-4 md:gap-8">
+          <div key={product.id} className="flex flex-col items-center">
             <div className="sticky top-20 w-full lg:hidden">
               <ProductHeader title={product.title} />
             </div>
