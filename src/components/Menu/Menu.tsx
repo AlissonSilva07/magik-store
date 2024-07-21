@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Search, SearchIcon, X } from 'lucide-react'
 import { Logo } from '../Navbar/Logo';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Product } from '../../@types/Product';
 import { useApi } from '../../hooks/useApi';
+import { ProductContext } from '../../context/product-context';
 
 export interface IMenuProps {
   showMenu: boolean
@@ -14,6 +15,7 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
 
   const [isOpenSearchMobile, setIsOpenSearchMobile] = useState<boolean>(false)
   const { getProducts } = useApi()
+  const { handleOpenCart, cart } = useContext(ProductContext)
 
   const [products, setProducts] = useState<Product[]>([])
   const [query, setQuery] = useState<string>('')
@@ -50,10 +52,13 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
             </button>
           </div>
 
-          <div className='p-4 md:p-8 flex flex-col gap-4 border-b border-cinza-border/20'>
+          <div className='p-4 md:p-8 flex flex-col items-start gap-4 border-b border-cinza-border/20'>
             <Link to='/' onClick={onCloseMenu}>Home</Link>
             <Link to='/products' onClick={onCloseMenu}>Products</Link>
-            <Link to='/' onClick={onCloseMenu}>Cart (0)</Link>
+            <button onClick={() => {
+              onCloseMenu()
+              handleOpenCart()
+            }}>Cart ({cart.length})</button>
           </div>
 
           <div className='p-4 md:p-8 '>

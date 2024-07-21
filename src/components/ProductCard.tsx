@@ -1,7 +1,9 @@
 import { Product } from "../@types/Product";
-import { ArrowRight, ShoppingCartIcon, Star } from 'lucide-react'
+import { ArrowRight, Check, ShoppingCartIcon, Star } from 'lucide-react'
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { tv } from "tailwind-variants";
+import { ProductContext } from "../context/product-context";
 
 export interface IProductCardProps {
   product: Product
@@ -19,6 +21,20 @@ const card = tv({
 })
 
 export function ProductCard({ product, btnSize }: IProductCardProps) {
+  const { cart, handleAddProduct, handleRemoveProduct } = useContext(ProductContext)
+  const [isAdded, setIsAdded] = useState<boolean>(false)
+
+  const addProduct = (product: Product) => {
+    if (cart.find(p => p.id === product.id)) {
+      handleRemoveProduct(product.id)
+      setIsAdded(false)
+    }
+
+    handleAddProduct(product)
+
+    setIsAdded(true)
+  }
+
   return (
     <div className={card({ size: btnSize })}>
       <Link to={`/products/${product.id}`}>
@@ -41,8 +57,8 @@ export function ProductCard({ product, btnSize }: IProductCardProps) {
             Buy Now
             <ArrowRight className="text-roxo" />
           </button>
-          <button className="p-3 hover:bg-roxo/10 rounded-full">
-            <ShoppingCartIcon className="text-roxo" />
+          <button disabled={isAdded} onClick={() => addProduct(product)} className="p-3 hover:bg-roxo/10 rounded-full">
+            {isAdded ? <Check className="text-roxo" /> : <ShoppingCartIcon className="text-roxo" />}
           </button>
         </div>
       </div>
