@@ -25,7 +25,7 @@ export function ProductCard({ product, btnSize }: IProductCardProps) {
   const [isAdded, setIsAdded] = useState<boolean>(false)
 
   const addProduct = (product: Product) => {
-    if (cart.find(p => p.id === product.id)) {
+    if (cart.cartItems.find(p => p.product.id === product.id)) {
       handleRemoveProduct(product.id)
       setIsAdded(false)
     }

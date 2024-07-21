@@ -3,7 +3,7 @@ import { Filtering } from "../@types/Filtering"
 import { DEFAULT_FILTER } from "../utils/default-filter"
 import { countFilter } from "../utils/count-filter"
 import { Product } from "../@types/Product"
-import { cartReducer } from "../utils/cart-reducer"
+import { cartReducer, CartState, initialState } from "../utils/cart-reducer"
 
 export type ProductContextType = {
     filter: Filtering
@@ -13,9 +13,10 @@ export type ProductContextType = {
     isOpenCart: boolean
     handleOpenCart: () => void
     handleCloseCart: () => void
-    cart: Product[]
+    cart: CartState
     handleAddProduct: (product: Product) => void
     handleRemoveProduct: (productId: number) => void
+    updateQuantity: (productId: number, quantity: number) => void
     getCartTotal: () => number
 }
 
@@ -43,7 +44,7 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
     }
     //CART
     const [isOpenCart, setIsOpenCart] = useState<boolean>(false)
-    const [cart, dispatch] = useReducer(cartReducer, [])
+    const [cart, dispatch] = useReducer(cartReducer, initialState)
 
     const handleOpenCart = () => {
         setIsOpenCart(true)
@@ -56,20 +57,30 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
     const handleAddProduct = (product: Product): void => {
         dispatch({
             type: 'add-product',
-            product: product
+            payload: product
         })
     }
 
     const handleRemoveProduct = (productId: number): void => {
         dispatch({
             type: 'remove-product',
-            id: productId
+            payload: productId
+        })
+    }
+
+    const updateQuantity = (productId: number, quantity: number): void => {
+        dispatch({
+            type: 'update-quantity',
+            payload: {
+                productId: productId,
+                quantity: quantity
+            }
         })
     }
 
     const getCartTotal = (): number => {
         const initialValue = 0
-        return cart.reduce((acc, current) => acc + current.price, initialValue)
+        return cart.cartItems.reduce((acc, current) => acc + (current.product.price * current.quantity), initialValue)
     }
 
     return (
@@ -85,6 +96,7 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
                 cart,
                 handleAddProduct,
                 handleRemoveProduct,
+                updateQuantity,
                 getCartTotal
             }}>
             {children}

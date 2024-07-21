@@ -58,7 +58,7 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
             <button onClick={() => {
               onCloseMenu()
               handleOpenCart()
-            }}>Cart ({cart.length})</button>
+            }}>Cart ({cart.cartItems.length})</button>
           </div>
 
           <div className='p-4 md:p-8 '>

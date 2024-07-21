@@ -22,13 +22,13 @@ export function Navbar () {
           <Search className='size-5 rounded-full' />
         </button>
         <button onClick={() => setShowMenu(true)} className='relative lg:hidden'>
-          <span className='absolute -top-2 -right-1 text-xs py-0.5 px-1  rounded-full bg-roxo text-branco'>{cart.length}</span>
+          <span className='absolute -top-2 -right-1 text-xs py-0.5 px-1  rounded-full bg-roxo text-branco'>{cart.cartItems.length}</span>
           <MenuIcon />
         </button>
         <div className='hidden h-full lg:flex items-center gap-8'>
           <Link to='/' className='h-full flex items-center hover:font-bold hover:border-b-4 hover:border-roxo'>Home</Link>
           <Link to='/products' className='h-full flex items-center hover:font-bold hover:border-b-4 hover:border-roxo'>Products</Link>
-          <button onClick={handleOpenCart} className='h-full flex items-center hover:font-bold hover:border-b-4 hover:border-roxo'>Cart ({cart.length})</button>
+          <button onClick={handleOpenCart} className='h-full flex items-center hover:font-bold hover:border-b-4 hover:border-roxo'>Cart ({cart.cartItems.length})</button>
         </div>
         <div className='hidden lg:flex w-[1px] h-8 bg-cinza-border/20'></div>
         <a href="#" className='hidden lg:flex hover:font-bold'>Login / Register</a>
