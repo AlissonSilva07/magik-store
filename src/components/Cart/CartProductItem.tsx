@@ -1,6 +1,6 @@
 import { Minus, Plus, Trash } from 'lucide-react';
 import { Product } from '../../@types/Product';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CartItem } from '../../utils/cart-reducer';
 
 export interface ICartProductItemProps {
@@ -11,26 +11,23 @@ export interface ICartProductItemProps {
 }
 
 export function CartProductItem({ cartProduct, handleRemoveProduct, updateQuantity }: ICartProductItemProps) {
-    const [cartQuantity, setCartQuantity] = useState<number>(1)
+    const [cartQuantity, setCartQuantity] = useState<number>(cartProduct.quantity)
 
-    const handleUpdateQuantity = (mode: string, productId: number) => {
-        switch (mode) {
-            case 'increment':
-                setCartQuantity(cartQuantity + 1)
-                break;
-            case 'decrement':
-                setCartQuantity(cartQuantity > 1 ? cartQuantity - 1 : cartQuantity)
-                break;
-            default:
-                null
-        }
+    const handleIncreaseQuantity = () => {
+        setCartQuantity(prev => prev + 1)  
+    }
 
-        updateQuantity(productId, cartQuantity)
+    const handleDecreaseQuantity = () => {
+        setCartQuantity(prev => prev > 1 ? prev - 1 : prev)
     }
 
     const removeProduct = (productId: number) => {
         handleRemoveProduct(productId)
     }
+
+    useEffect(() => {
+        updateQuantity(cartProduct.product.id, cartQuantity)
+    }, [cartQuantity])
 
     return (
         <div className='w-full p-3 flex items-center gap-3 border border-cinza-border/20 rounded-md'>
@@ -42,11 +39,11 @@ export function CartProductItem({ cartProduct, handleRemoveProduct, updateQuanti
                 <p className='text-xl font-bold'>${cartProduct.product.price}</p>
                 <div className='w-full flex items-center justify-between'>
                     <div className='flex items-center gap-3'>
-                        <button onClick={() => handleUpdateQuantity('decrement', cartProduct.product.id)} className='group rounded-full bg-roxo hover:bg-roxo/40'>
+                        <button onClick={handleDecreaseQuantity} className='group rounded-full bg-roxo hover:bg-roxo/40'>
                             <Minus className='text-branco group-hover:text-roxo size-5' />
                         </button>
                         <span>{cartProduct.quantity}</span>
-                        <button onClick={() => handleUpdateQuantity('increment', cartProduct.product.id)} className='group rounded-full bg-roxo hover:bg-roxo/40'>
+                        <button onClick={handleIncreaseQuantity} className='group rounded-full bg-roxo hover:bg-roxo/40'>
                             <Plus className='text-branco group-hover:text-roxo size-5' />
                         </button>
                     </div>
