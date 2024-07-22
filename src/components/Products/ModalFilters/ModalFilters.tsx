@@ -4,7 +4,7 @@ import { SelectCategory } from './SelectCategory';
 import { SelectSorting } from './SelectSorting';
 import { sorting } from '../../../utils/static-data';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { ProductContext } from '../../../context/product-context';
+import { FilterContext } from '../../../context/filter-context';
 import { ModalInput } from './ModalInput';
 
 export interface IModalFiltersProps {
@@ -15,7 +15,7 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
   const { getCategories } = useApi()
   const [categories, setCategories] = useState<string[]>([])
   const [loading, setLoading] = useState<boolean>(true)
-  const { filter, updateFilter, removeFilter } = useContext(ProductContext)
+  const { filter, updateFilter, removeFilter } = useContext(FilterContext)
 
   const [categoryFilter, setCategoryFilter] = useState<string>(filter ? filter.category : '')
   const [sortingFilter, setSortingFilter] = useState<string>(filter ? filter.sort_by : '')

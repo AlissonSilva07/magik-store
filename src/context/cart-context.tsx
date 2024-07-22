@@ -1,15 +1,8 @@
 import { createContext, useReducer, useState } from "react"
-import { Filtering } from "../@types/Filtering"
-import { DEFAULT_FILTER } from "../utils/default-filter"
-import { countFilter } from "../utils/count-filter"
 import { Product } from "../@types/Product"
 import { cartReducer, CartState, initialState } from "../utils/cart-reducer"
 
-export type ProductContextType = {
-    filter: Filtering
-    filterCounter: number
-    updateFilter: (filter: Filtering) => void
-    removeFilter: () => void
+export type CartContextType = {
     isOpenCart: boolean
     handleOpenCart: () => void
     handleCloseCart: () => void
@@ -20,28 +13,13 @@ export type ProductContextType = {
     getCartTotal: () => number
 }
 
-interface ProductProviderProps {
+interface CartProviderProps {
     children: React.ReactNode
 }
 
-export const ProductContext = createContext<ProductContextType>({} as ProductContextType)
+export const CartContext = createContext<CartContextType>({} as CartContextType)
 
-const ProductProvider = ({ children }: ProductProviderProps) => {   
-
-    //FILTERS
-    const [filter, setFilter] = useState<Filtering>(DEFAULT_FILTER)
-    const [filterCounter, setFilterCounter] = useState<number>(0)
-    
-    const updateFilter = (updatedFilter: Filtering) => {
-        setFilter(updatedFilter)
-        setFilterCounter(countFilter(updatedFilter))
-        localStorage.setItem('filter', JSON.stringify(updatedFilter))
-    }
-
-    const removeFilter = () => {
-        setFilter(DEFAULT_FILTER)
-        localStorage.removeItem('filter')
-    }
+const CartProvider = ({ children }: CartProviderProps) => {
     //CART
     const [isOpenCart, setIsOpenCart] = useState<boolean>(false)
     const [cart, dispatch] = useReducer(cartReducer, initialState)
@@ -84,12 +62,8 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
     }
 
     return (
-        <ProductContext.Provider
+        <CartContext.Provider
             value={{
-                filter,
-                filterCounter,
-                updateFilter,
-                removeFilter,
                 isOpenCart,
                 handleOpenCart,
                 handleCloseCart,
@@ -100,8 +74,8 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
                 getCartTotal
             }}>
             {children}
-        </ProductContext.Provider>
+        </CartContext.Provider>
     )
 }
 
-export default ProductProvider
+export default CartProvider

@@ -4,7 +4,7 @@ import { Logo } from '../Navbar/Logo';
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Product } from '../../@types/Product';
 import { useApi } from '../../hooks/useApi';
-import { ProductContext } from '../../context/product-context';
+import { CartContext } from '../../context/cart-context';
 
 export interface IMenuProps {
   showMenu: boolean
@@ -15,7 +15,7 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
 
   const [isOpenSearchMobile, setIsOpenSearchMobile] = useState<boolean>(false)
   const { getProducts } = useApi()
-  const { handleOpenCart, cart } = useContext(ProductContext)
+  const { handleOpenCart, cart } = useContext(CartContext)
 
   const [products, setProducts] = useState<Product[]>([])
   const [query, setQuery] = useState<string>('')

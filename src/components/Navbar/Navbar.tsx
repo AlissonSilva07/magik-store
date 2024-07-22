@@ -3,15 +3,15 @@ import { Search, MenuIcon } from 'lucide-react'
 import { Menu } from '../Menu/Menu';
 import { ModalSearch } from './ModalSearch';
 import { Logo } from './Logo';
-import { ProductContext } from '../../context/product-context';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../../context/cart-context';
 
 
-export function Navbar () {
-    const [ showMenu, setShowMenu ] = useState<boolean>(false)
-    const [ showSearch, setShowSearch ] = useState<boolean>(false)
+export function Navbar() {
+  const [showMenu, setShowMenu] = useState<boolean>(false)
+  const [showSearch, setShowSearch] = useState<boolean>(false)
 
-    const { cart, handleOpenCart } = useContext(ProductContext)
+  const { cart, handleOpenCart } = useContext(CartContext)
 
   return (
     <nav className='fixed top-0 right-0 left-0 h-20 bg-white px-4 md:px-8 bg-branco flex items-center justify-between border-b border-cinza-border/20 z-40'>
@@ -22,7 +22,9 @@ export function Navbar () {
           <Search className='size-5 rounded-full' />
         </button>
         <button onClick={() => setShowMenu(true)} className='relative lg:hidden'>
-          <span className='absolute -top-2 -right-1 text-xs py-0.5 px-1  rounded-full bg-roxo text-branco'>{cart.cartItems.length}</span>
+          {cart.cartItems.length > 0 &&
+            <span className='absolute -top-2 -right-1 text-xs py-0.5 px-1  rounded-full bg-roxo text-branco'>{cart.cartItems.length}</span>
+          }
           <MenuIcon />
         </button>
         <div className='hidden h-full lg:flex items-center gap-8'>

@@ -1,13 +1,13 @@
 import { X } from 'lucide-react';
 import * as React from 'react';
-import { ProductContext } from '../../context/product-context';
 import { CartProductItem } from './CartProductItem';
+import { CartContext } from '../../context/cart-context';
 
 export interface ICartProps {
 }
 
 export function Cart() {
-    const { handleCloseCart, cart, handleAddProduct, handleRemoveProduct, updateQuantity, getCartTotal } = React.useContext(ProductContext)
+    const { handleCloseCart, cart, handleAddProduct, handleRemoveProduct, updateQuantity, getCartTotal } = React.useContext(CartContext)
 
     const modalRef = React.useRef<HTMLDivElement>(null)
 
@@ -28,7 +28,7 @@ export function Cart() {
                 <div className='flex-1 flex flex-col p-4 md:p-8 overflow-y-scroll'>
                     <div className='flex flex-col gap-4 md:gap-8'>
                         {cart.cartItems.length > 0 ?
-                            cart.cartItems.map(p => <CartProductItem cartProduct={p} handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct} updateQuantity={updateQuantity} />) :
+                            cart.cartItems.map(p => <CartProductItem key={p.product.id} cartProduct={p} handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct} updateQuantity={updateQuantity} />) :
                             <p>You haven't added any items to your cart.</p>
                         }
                     </div>

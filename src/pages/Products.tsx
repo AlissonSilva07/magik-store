@@ -6,7 +6,7 @@ import { SidebarFilters } from '../components/Products/SidebarFilters';
 import { Product } from '../@types/Product';
 import { useApi } from '../hooks/useApi';
 import { applyFilters } from '../utils/apply-filters';
-import { ProductContext } from '../context/product-context';
+import { FilterContext } from '../context/filter-context';
 
 export function Products () {
     // PRODUCTS
@@ -26,7 +26,7 @@ export function Products () {
         setShowFilters(false)
     }
 
-    const { filter } = useContext(ProductContext)
+    const { filter } = useContext(FilterContext)
 
     const filteredProducts = applyFilters(products, filter)
 

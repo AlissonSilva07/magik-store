@@ -4,7 +4,7 @@ import { SelectCategory } from '../Products/ModalFilters/SelectCategory';
 import { SelectSorting } from '../Products/ModalFilters/SelectSorting';
 import { sorting } from '../../utils/static-data';
 import { useContext, useEffect, useState } from 'react';
-import { ProductContext } from '../../context/product-context';
+import { FilterContext } from '../../context/filter-context';
 import { Filter } from 'lucide-react';
 
 export interface ISidebarFiltersProps {
@@ -14,7 +14,7 @@ export function SidebarFilters() {
   const { getCategories } = useApi()
   const [categories, setCategories] = useState<string[]>([])
   const [loading, setLoading] = useState<boolean>(true)
-  const { filter, filterCounter, updateFilter, removeFilter } = useContext(ProductContext)
+  const { filter, filterCounter, updateFilter, removeFilter } = useContext(FilterContext)
 
   const [categoryFilter, setCategoryFilter] = useState<string>(filter ? filter.category : '')
   const [sortingFilter, setSortingFilter] = useState<string>(filter ? filter.sort_by : '')

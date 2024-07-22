@@ -3,7 +3,8 @@ import { ArrowRight, Check, ShoppingCartIcon, Star } from 'lucide-react'
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { tv } from "tailwind-variants";
-import { ProductContext } from "../context/product-context";
+import {  } from "../context/filter-context";
+import { CartContext } from "../context/cart-context";
 
 export interface IProductCardProps {
   product: Product
@@ -21,7 +22,7 @@ const card = tv({
 })
 
 export function ProductCard({ product, btnSize }: IProductCardProps) {
-  const { cart, handleAddProduct, handleRemoveProduct } = useContext(ProductContext)
+  const { cart, handleAddProduct, handleRemoveProduct } = useContext(CartContext)
   const [isAdded, setIsAdded] = useState<boolean>(false)
 
   const addProduct = (product: Product) => {

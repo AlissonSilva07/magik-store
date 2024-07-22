@@ -7,7 +7,7 @@ import { ProductSectionStyle } from "../components/Product/ProductSectionStyle";
 import { ProductHeader } from "../components/Product/ProductHeader";
 import { ProductRelatedItem } from "../components/Product/ProductRelatedItem";
 import { ProductPageSkeleton } from "../components/Skeletons/ProductPageSkeleton";
-import { ProductContext } from "../context/product-context";
+import { FilterContext } from "../context/filter-context";
 import { sizes } from "../utils/static-data";
 
 export function ProductPage() {
@@ -19,7 +19,7 @@ export function ProductPage() {
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState<boolean>(false)
 
-  const { updateFilter } = useContext(ProductContext)
+  const { updateFilter } = useContext(FilterContext)
 
   const navigate = useNavigate()
 
