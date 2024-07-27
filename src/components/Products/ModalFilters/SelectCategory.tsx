@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { SelectCategorySkeleton } from "../../Skeletons/SelectCategorySkeleton";
 
@@ -11,12 +11,16 @@ export interface IRadioCategoryProps {
 
 export function SelectCategory({ loading, filterCategory, categories, setCategoryFilter }: IRadioCategoryProps) {
 
-    const [selectedOption, setSelectedOption] = useState<string | null>(filterCategory ? filterCategory : '');
+    const [selectedOption, setSelectedOption] = useState<string | null>(filterCategory || '');
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);
         setCategoryFilter(option)
     };
+
+    useEffect(() => {
+        setSelectedOption(filterCategory);
+    }, [filterCategory]);
 
     return (
         <div className="flex flex-wrap items-center gap-4">
@@ -35,7 +39,7 @@ export function SelectCategory({ loading, filterCategory, categories, setCategor
                         <label
                             htmlFor={option}
                             onTouchStart={() => handleOptionChange(option)}
-                            className={`button ${option === selectedOption ? 'bg-roxo text-branco hover:bg-roxo hover:text-branco' : 'bg-branco text-cinza-800 lg:hover:text-preto'} px-3 py-1 flex items-center justify-center rounded-full cursor-pointer shadow-md`}
+                            className={`${option === selectedOption ? 'bg-roxo text-branco hover:bg-roxo hover:text-branco' : 'bg-branco text-cinza-800 lg:hover:text-preto'} px-3 py-1 flex items-center justify-center rounded-full cursor-pointer shadow-md`}
                         >
                             {option}
                         </label>

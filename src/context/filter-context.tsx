@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useEffect, useMemo, useState } from "react"
 import { Filtering } from "../@types/Filtering"
 import { DEFAULT_FILTER } from "../utils/default-filter"
 import { countFilter } from "../utils/count-filter"
@@ -28,27 +28,32 @@ const FilterProvider = ({ children }: FilterProviderProps) => {
 
     const removeFilter = () => {
         setFilter(DEFAULT_FILTER)
+        setFilterCounter(countFilter(DEFAULT_FILTER));
         localStorage.removeItem('filter')
     }
 
     useEffect(() => {
         const filterStorage = localStorage.getItem('filter')
 
-        if(filterStorage) {
+        if(filterStorage != null) {
             const parsedStorage = JSON.parse(filterStorage)
             setFilter(parsedStorage)
             setFilterCounter(countFilter(parsedStorage))
         }
     }, [])
+
+    const contextValue = useMemo(() => ({
+        filter,
+        filterCounter,
+        updateFilter,
+        removeFilter,
+    }), [filter, filterCounter]);
     
     return (
         <FilterContext.Provider
-            value={{
-                filter,
-                filterCounter,
-                updateFilter,
-                removeFilter
-            }}>
+            value={
+                contextValue
+            }>
             {children}
         </FilterContext.Provider>
     )
