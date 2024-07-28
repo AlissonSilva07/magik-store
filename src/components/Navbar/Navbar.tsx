@@ -3,7 +3,7 @@ import { Search, MenuIcon } from 'lucide-react'
 import { Menu } from '../Menu/Menu';
 import { ModalSearch } from './ModalSearch';
 import { Logo } from './Logo';
-import { Link } from 'react-router-dom';
+import { NavLink, NavLinkRenderProps } from 'react-router-dom';
 import { CartContext } from '../../context/cart-context';
 
 
@@ -18,7 +18,7 @@ export function Navbar() {
       <Logo height={12} />
 
       <div className='h-full flex items-center gap-8'>
-        <button onClick={() => setShowSearch(true)} className='hidden md:flex'>
+        <button onClick={() => setShowSearch(true)} className='hidden md:flex p-3 hover:bg-cinza-100/20 rounded-full'>
           <Search className='size-5 rounded-full' />
         </button>
         <button onClick={() => setShowMenu(true)} className='relative lg:hidden'>
@@ -28,12 +28,20 @@ export function Navbar() {
           <MenuIcon />
         </button>
         <div className='hidden h-full lg:flex items-center gap-8'>
-          <Link to='/' className='h-full flex items-center hover:font-bold hover:border-b-4 hover:border-roxo'>Home</Link>
-          <Link to='/products' className='h-full flex items-center hover:font-bold hover:border-b-4 hover:border-roxo'>Products</Link>
-          <button onClick={handleOpenCart} className='h-full flex items-center hover:font-bold hover:border-b-4 hover:border-roxo'>Cart ({cart.cartItems.length})</button>
+          <NavLink to='/' className={({ isActive }: NavLinkRenderProps) =>
+            isActive ? 'h-full flex items-center text-roxo border-b-4 border-b-roxo border-t-4 border-t-branco' : 'h-full flex items-center hover:border-t-4 hover:border-t-branco hover:border-b-4 hover:border-b-roxo/40'
+          }>Home</NavLink>
+          <NavLink to='/products' className={({ isActive }: NavLinkRenderProps) =>
+            isActive ? 'h-full flex items-center text-roxo border-b-4 border-b-roxo border-t-4 border-t-branco' : 'h-full flex items-center hover:border-t-4 hover:border-t-branco hover:border-b-4 hover:border-b-roxo/40'
+          }>Products</NavLink>
+          <button onClick={handleOpenCart} className='p-3 flex-col items-center justify-center hover:bg-cinza-100/20 rounded-md cursor-pointer'>
+            Cart ({cart.cartItems.length})
+          </button>
         </div>
-        <div className='hidden lg:flex w-[1px] h-8 bg-cinza-border/20'></div>
-        <a href="#" className='hidden lg:flex hover:font-bold'>Login / Register</a>
+        <div className='hidden lg:flex w-[1px] h-8 bg-cinza-border/20 cursor-pointer'></div>
+        <a href="#" className='hidden lg:flex p-3 flex-col items-center justify-center hover:bg-cinza-100/20 rounded-md'>
+          Login / Register
+        </a>
       </div>
 
       <Menu showMenu={showMenu} onCloseMenu={() => setShowMenu(false)} />

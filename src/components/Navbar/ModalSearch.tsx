@@ -38,9 +38,7 @@ export function ModalSearch({ showSearch, onCloseSearch }: IModalSearchProps) {
     getProducts().then(data => {
       setProducts(data)
     })
-      .catch(err => console.error(err))
-
-    
+      .catch(err => console.error(err))    
   }, [])
 
   return (
