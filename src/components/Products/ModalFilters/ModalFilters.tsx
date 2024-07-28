@@ -17,10 +17,10 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
   const [loading, setLoading] = useState<boolean>(true)
   const { filter, updateFilter, removeFilter } = useContext(FilterContext)
 
-  const [categoryFilter, setCategoryFilter] = useState<string>(filter ? filter.category : '')
-  const [sortingFilter, setSortingFilter] = useState<string>(filter ? filter.sort_by : '')
-  const [maxFilter, setMaxFilter] = useState<string | number | readonly string[] | undefined>(filter ? filter.price.max : undefined)
-  const [minFilter, setMinFilter] = useState<string | number | readonly string[] | undefined>(filter ? filter.price.min : undefined)
+  const [categoryFilter, setCategoryFilter] = useState<string>(filter.category || '')
+  const [sortingFilter, setSortingFilter] = useState<string>(filter.sort_by || '')
+  const [maxFilter, setMaxFilter] = useState<string | number | readonly string[] | undefined>(filter.price.max || undefined)
+  const [minFilter, setMinFilter] = useState<string | number | readonly string[] | undefined>(filter.price.min || undefined)
 
   const setFilters = () => {
     updateFilter({
@@ -36,9 +36,12 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
   }
 
   const resetFilter = () => {
-    removeFilter()
+    removeFilter()    
+    setCategoryFilter('')
+    setSortingFilter('')
+    setMaxFilter(undefined)
+    setMinFilter(undefined)
     handleCloseFilters()
-    window.location.reload()
   }
 
   const modalRef = useRef<HTMLDivElement>(null)
@@ -68,11 +71,11 @@ export function ModalFilters({ handleCloseFilters }: IModalFiltersProps) {
             <div className='flex flex-col gap-4'>
               <div className='w-full flex flex-col gap-4'>
                 <p className='font-bold'>Category</p>
-                <SelectCategory loading={loading} categories={categories} filterCategory={filter.category} setCategoryFilter={setCategoryFilter} />
+                <SelectCategory loading={loading} categories={categories} filterCategory={categoryFilter} setCategoryFilter={setCategoryFilter} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>
-                <SelectSorting sorting={sorting} filterSort={filter.sort_by} setSortingFilter={setSortingFilter} />
+                <SelectSorting sorting={sorting} filterSort={sortingFilter} setSortingFilter={setSortingFilter} />
               </div>
               <div className='flex flex-col gap-4'>
                 <p className='font-bold'>Sort By</p>

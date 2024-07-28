@@ -1,10 +1,11 @@
 import { Product } from "../@types/Product";
 import { ArrowRight, Check, ShoppingCartIcon, Star } from 'lucide-react'
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { tv } from "tailwind-variants";
 import {  } from "../context/filter-context";
 import { CartContext } from "../context/cart-context";
+import { USDollar } from "../utils/format-price";
 
 export interface IProductCardProps {
   product: Product
@@ -23,17 +24,14 @@ const card = tv({
 
 export function ProductCard({ product, btnSize }: IProductCardProps) {
   const { cart, handleAddProduct, handleRemoveProduct } = useContext(CartContext)
-  const [isAdded, setIsAdded] = useState<boolean>(false)
+  const isInCart: boolean = cart.cartItems.some(p => p.product.id === product.id)
 
-  const addProduct = (product: Product) => {
-    if (cart.cartItems.find(p => p.product.id === product.id)) {
+  const toggleAddRemove = (newProduct: Product) => {
+    if(isInCart) {
       handleRemoveProduct(product.id)
-      setIsAdded(false)
+    } else {
+      handleAddProduct(newProduct)
     }
-
-    handleAddProduct(product)
-
-    setIsAdded(true)
   }
 
   return (
@@ -51,15 +49,15 @@ export function ProductCard({ product, btnSize }: IProductCardProps) {
           </span>
         </div>
         <p className="text-cinza-800 line-clamp-2">{product.description}</p>
-        <p className="text-3xl font-bold">${product.price}</p>
+        <p className="text-3xl font-bold">{USDollar.format(product.price)}</p>
 
         <div className="w-full flex items-center gap-6">
           <button className="w-full flex items-center justify-center p-3 gap-2.5 bg-roxo/20 hover:bg-roxo/40 text-roxo rounded-full">
             Buy Now
             <ArrowRight className="text-roxo" />
           </button>
-          <button disabled={isAdded} onClick={() => addProduct(product)} className="p-3 hover:bg-roxo/10 rounded-full">
-            {isAdded ? <Check className="text-roxo" /> : <ShoppingCartIcon className="text-roxo" />}
+          <button onClick={() => toggleAddRemove(product)} className="p-3 hover:bg-roxo/10 rounded-full">
+            {isInCart ? <Check className="text-roxo" /> : <ShoppingCartIcon className="text-roxo" />}
           </button>
         </div>
       </div>

@@ -2,12 +2,13 @@ import { X } from 'lucide-react';
 import * as React from 'react';
 import { CartProductItem } from './CartProductItem';
 import { CartContext } from '../../context/cart-context';
+import { USDollar } from "../../utils/format-price";
 
 export interface ICartProps {
 }
 
 export function Cart() {
-    const { handleCloseCart, cart, handleAddProduct, handleRemoveProduct, updateQuantity, getCartTotal } = React.useContext(CartContext)
+    const { handleCloseCart, cart, handleAddProduct, handleRemoveProduct, updateQuantity, getCartTotal, saveCart, clearCart } = React.useContext(CartContext)
 
     const modalRef = React.useRef<HTMLDivElement>(null)
 
@@ -16,6 +17,7 @@ export function Cart() {
             return
         }
     }
+
     return (
         <div onClick={e => handleClickAway(e)} className='fixed top-0 right-0 bottom-0 left-0 bg-preto/40 z-40'>
             <div ref={modalRef} className='fixed top-0 left-0 bottom-0 right-0 md:w-1/2 md:left-auto md:shadow-lg lg:w-1/4 lg:left-auto flex flex-col bg-branco z-50'>
@@ -34,9 +36,12 @@ export function Cart() {
                     </div>
                 </div>
                 <div className='flex flex-col gap-4 items-center border-t border-cinza-border/20 p-4'>
-                    <p className='w-full text-center'>Total: <span className='font-bold'>${getCartTotal()}</span></p>
-                    <button onClick={() => console.log(cart)} className='w-full p-3 bg-roxo text-branco hover:bg-roxo/80 rounded-lg'>
+                    <p className='w-full text-center'>Total: <span className='font-bold'>{USDollar.format(getCartTotal())}</span></p>
+                    <button onClick={() => saveCart(cart)} className='w-full p-3 bg-roxo text-branco hover:bg-roxo/80 rounded-lg'>
                         Procced to Checkout
+                    </button>
+                    <button onClick={clearCart} className='w-full p-3 bg-white text-cinza-100 border border-cinza-100 hover:text-preto hover:border-preto rounded-lg'>
+                        Clear Cart
                     </button>
                 </div>
             </div>

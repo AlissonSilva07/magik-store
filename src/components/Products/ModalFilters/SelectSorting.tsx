@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 export interface IRadioCategoryProps {
@@ -9,12 +9,16 @@ export interface IRadioCategoryProps {
 
 export function SelectSorting({ filterSort, sorting, setSortingFilter }: IRadioCategoryProps) {
 
-    const [selectedOption, setSelectedOption] = useState<string | null>(filterSort ? filterSort : '');
+    const [selectedOption, setSelectedOption] = useState<string | null>(filterSort || '');
 
     const handleOptionChange = (option: string) => {
         setSelectedOption(option === selectedOption ? null : option);
         setSortingFilter(option)
     };
+
+    useEffect(() => {
+        setSelectedOption(filterSort);
+    }, [filterSort]);
 
     return (
         <div className="flex flex-wrap gap-3">

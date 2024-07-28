@@ -7,7 +7,6 @@ import { Product } from '../@types/Product';
 import { useApi } from '../hooks/useApi';
 import { applyFilters } from '../utils/apply-filters';
 import { FilterContext } from '../context/filter-context';
-import { DEFAULT_FILTER } from '../utils/default-filter';
 
 export function Products () {
     // PRODUCTS
@@ -44,7 +43,7 @@ export function Products () {
     <>
         <main className='pt-20 m-4 lg:m-0 md:m-8 flex flex-col lg:flex-row gap-4 md:gap-8 lg:gap-0'>
             <ProductsFilter openFilters={handleOpenFilters} />
-            {filter != DEFAULT_FILTER && <SidebarFilters />}
+            <SidebarFilters />
             <ProductsList loading={loading} filter={filter} products={filteredProducts} />
         </main>
 

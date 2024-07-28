@@ -16,9 +16,15 @@ interface FilterProviderProps {
 
 export const FilterContext = createContext<FilterContextType>({} as FilterContextType)
 
-const FilterProvider = ({ children }: FilterProviderProps) => {   
-    const [filter, setFilter] = useState<Filtering>(DEFAULT_FILTER)
-    const [filterCounter, setFilterCounter] = useState<number>(0)
+const FilterProvider = ({ children }: FilterProviderProps) => {
+    const getInitialState = (): Filtering => {
+        const savedFilter = localStorage.getItem('filter')
+        const parsedCart = JSON.parse(savedFilter!)
+        return parsedCart ? parsedCart : DEFAULT_FILTER
+    }
+
+    const [filter, setFilter] = useState<Filtering>(getInitialState())
+    const [filterCounter, setFilterCounter] = useState<number>(countFilter(getInitialState()))
     
     const updateFilter = (updatedFilter: Filtering) => {
         setFilter(updatedFilter)
@@ -33,14 +39,8 @@ const FilterProvider = ({ children }: FilterProviderProps) => {
     }
 
     useEffect(() => {
-        const filterStorage = localStorage.getItem('filter')
-
-        if(filterStorage != null) {
-            const parsedStorage = JSON.parse(filterStorage)
-            setFilter(parsedStorage)
-            setFilterCounter(countFilter(parsedStorage))
-        }
-    }, [])
+        localStorage.setItem('filter', JSON.stringify(filter))
+    }, [filter])
 
     const contextValue = useMemo(() => ({
         filter,

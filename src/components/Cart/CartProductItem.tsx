@@ -2,6 +2,7 @@ import { Minus, Plus, Trash } from 'lucide-react';
 import { Product } from '../../@types/Product';
 import { useEffect, useState } from 'react';
 import { CartItem } from '../../utils/cart-reducer';
+import { USDollar } from '../../utils/format-price';
 
 export interface ICartProductItemProps {
     cartProduct: CartItem
@@ -27,7 +28,7 @@ export function CartProductItem({ cartProduct, handleRemoveProduct, updateQuanti
 
     useEffect(() => {
         updateQuantity(cartProduct.product.id, cartQuantity)
-    }, [cartQuantity])
+    }, [cartProduct.product.id, cartQuantity, updateQuantity])
 
     return (
         <div className='w-full p-3 flex items-center gap-3 border border-cinza-border/20 rounded-md'>
@@ -36,7 +37,7 @@ export function CartProductItem({ cartProduct, handleRemoveProduct, updateQuanti
             </div>
             <div className='w-full flex flex-col gap-2'>
                 <p className='text-cinza-800 line-clamp-2'>{cartProduct.product.title}</p>
-                <p className='text-xl font-bold'>${cartProduct.product.price}</p>
+                <p className='text-xl font-bold'>{USDollar.format(cartProduct.product.price)}</p>
                 <div className='w-full flex items-center justify-between'>
                     <div className='flex items-center gap-3'>
                         <button onClick={handleDecreaseQuantity} className='group rounded-full bg-roxo hover:bg-roxo/40'>

@@ -34,6 +34,10 @@ export function SidebarFilters() {
 
   const resetFilter = () => {
     removeFilter()
+    setCategoryFilter('')
+    setSortingFilter('')
+    setMaxFilter(undefined)
+    setMinFilter(undefined)
   }
 
   useEffect(() => {
@@ -54,8 +58,7 @@ export function SidebarFilters() {
           <Filter className='size-5 text-branco font-bold' />
         }
       </div>
-      {filter && (filter.category != '' || filter.sort_by != '' || filter.price != null) && (
-        <div className='h-full m-4 md:m-8 flex flex-col gap-8'>
+      <div className='h-full m-4 md:m-8 flex flex-col gap-8'>
           <div>
             <div className='flex flex-col gap-4'>
               <div className='w-full flex flex-col gap-4'>
@@ -85,7 +88,6 @@ export function SidebarFilters() {
             </button>
           </div>
         </div>
-      )}
     </div>
   );
 }
