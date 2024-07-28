@@ -9,6 +9,7 @@ import { ProductRelatedItem } from "../components/Product/ProductRelatedItem";
 import { ProductPageSkeleton } from "../components/Skeletons/ProductPageSkeleton";
 import { FilterContext } from "../context/filter-context";
 import { sizes } from "../utils/static-data";
+import { USDollar } from "../utils/format-price";
 
 export function ProductPage() {
   const { productId } = useParams()
@@ -63,7 +64,7 @@ export function ProductPage() {
               <p className="hidden md:block">Back</p>
             </Link>
             <div className="sticky top-20 w-full lg:hidden">
-              <ProductHeader title={product.title} />
+              <ProductHeader product={product} />
             </div>
 
             <div className="w-full flex flex-col items-center lg:flex-row lg:w-full">
@@ -72,13 +73,13 @@ export function ProductPage() {
               </div>
               <div className="w-full flex flex-col border-t lg:border-l lg:border-t-0 border-cinza-border/20">
                 <div className="sticky top-20 w-full hidden lg:flex">
-                  <ProductHeader title={product.title} />
+                  <ProductHeader product={product} />
                 </div>
 
                 <div className="flex flex-col p-4 md:p-8 gap-4">
                   <div className="flex flex-col gap-2">
                     <p className="w-fit p-1 pl-0 text-roxo/80 text-xs text-left font-bold border-b border-roxo/80">PRICE</p>
-                    <p className="py-2.5 text-preto text-6xl font-bold">${product.price}</p>
+                    <p className="py-2.5 text-preto text-6xl font-bold">{USDollar.format(product.price)}</p>
                   </div>
                   <ProductSectionStyle title="category" content={
                     <button onClick={() => goToCategory()} className="flex items-center gap-2 hover:underline hover:decoration-solid">
