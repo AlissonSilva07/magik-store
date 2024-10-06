@@ -12,8 +12,6 @@ export interface IProductsListProps {
 }
 
 export function ProductsList({ loading, products, filter }: IProductsListProps) {
-
-
   const itemsPerPage = 8
   const playlistLength: number | undefined = products?.length
   const [current, setCurrent] = useState<number>(1)
