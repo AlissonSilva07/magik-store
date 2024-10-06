@@ -1,9 +1,9 @@
 import { Product } from "../@types/Product";
 import { ArrowRight, Check, ShoppingCartIcon, Star } from 'lucide-react'
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { tv } from "tailwind-variants";
-import {  } from "../context/filter-context";
+import { } from "../context/filter-context";
 import { CartContext } from "../context/cart-context";
 import { USDollar } from "../utils/format-price";
 
@@ -25,13 +25,19 @@ const card = tv({
 export function ProductCard({ product, btnSize }: IProductCardProps) {
   const { cart, handleAddProduct, handleRemoveProduct } = useContext(CartContext)
   const isInCart: boolean = cart.cartItems.some(p => p.product.id === product.id)
+  const navigate = useNavigate()
+
 
   const toggleAddRemove = (newProduct: Product) => {
-    if(isInCart) {
+    if (isInCart) {
       handleRemoveProduct(product.id)
     } else {
       handleAddProduct(newProduct)
     }
+  }
+
+  const goToProduct = (newProduct: number) => {
+    navigate(`/products/${newProduct}`)
   }
 
   return (
@@ -52,8 +58,8 @@ export function ProductCard({ product, btnSize }: IProductCardProps) {
         <p className="text-3xl font-bold">{USDollar.format(product.price)}</p>
 
         <div className="w-full flex items-center gap-6">
-          <button className="w-full flex items-center justify-center p-3 gap-2.5 bg-roxo/20 hover:bg-roxo/40 text-roxo rounded-full">
-            Buy Now
+          <button onClick={() => goToProduct(product.id)} className="w-full flex items-center justify-center p-3 gap-2.5 bg-roxo/20 hover:bg-roxo/40 text-roxo rounded-full">
+            See Details
             <ArrowRight className="text-roxo" />
           </button>
           <button onClick={() => toggleAddRemove(product)} className="p-3 hover:bg-roxo/10 rounded-full">
