@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import { Product } from "../../@types/Product";
-import { ArrowRight, SearchIcon, X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { SearchIcon, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export interface IModalSearchProps {
   showSearch: boolean
