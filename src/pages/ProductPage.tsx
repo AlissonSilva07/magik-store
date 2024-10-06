@@ -46,6 +46,7 @@ export function ProductPage() {
       setLoading(false)
       setProduct(data)
     }).catch(err => console.error(err))
+    window.scrollTo(0, 0);
   }, [productId])
 
   useEffect(() => {
