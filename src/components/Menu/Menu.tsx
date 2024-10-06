@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Search, SearchIcon, X } from 'lucide-react'
 import { Logo } from '../Navbar/Logo';
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
@@ -17,6 +17,8 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
   const { getProducts } = useApi()
   const { handleOpenCart, cart } = useContext(CartContext)
 
+  const navigate = useNavigate()
+
   const [products, setProducts] = useState<Product[]>([])
   const [query, setQuery] = useState<string>('')
 
@@ -31,6 +33,15 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
   const handleClickAway = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
       onCloseMenu()
+    }
+  }
+
+  const gotToProduct = (id: number) => {
+    try {
+      onCloseMenu()
+      navigate(`/products/${id}`)
+    } catch(err: unknown) {
+      console.error(err)
     }
   }
 
@@ -91,10 +102,10 @@ export function Menu({ showMenu, onCloseMenu }: IMenuProps) {
                 }
                 <div className="flex flex-col gap-2 overflow-y-scroll">
                   {query.length > 0 ? searchTerms.map(t => (
-                    <a href="#" className='relative flex items-start border border-branco hover:border-cinza-100 rounded-md'>
+                    <button onClick={() => gotToProduct(t.id)} className='relative border border-branco flex hover:border-cinza-100 rounded-md'>
                       <p className="p-2 pl-14">{t.title}</p>
                       <img src={t.image} className="w-4 absolute top-2 left-4" />
-                    </a>
+                    </button>
                   )) : null}
                 </div>
               </div>
