@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useApi } from "../../hooks/useApi";
 import { Product } from "../../@types/Product";
-import { SearchIcon, X } from "lucide-react";
+import { ArrowRight, SearchIcon, X } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 export interface IModalSearchProps {
   showSearch: boolean
@@ -15,6 +16,7 @@ export function ModalSearch({ showSearch, onCloseSearch }: IModalSearchProps) {
   const [query, setQuery] = useState<string>('')
 
   const modalRef = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
 
   const handleClickAway = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if(modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -34,6 +36,15 @@ export function ModalSearch({ showSearch, onCloseSearch }: IModalSearchProps) {
     })
   }, [query, products])
 
+  const gotToProduct = (id: number) => {
+    try {
+      onCloseSearch()
+      navigate(`/products/${id}`)
+    } catch(err: unknown) {
+      console.error(err)
+    }
+  }
+
   useEffect(() => {
     getProducts().then(data => {
       setProducts(data)
@@ -48,7 +59,7 @@ export function ModalSearch({ showSearch, onCloseSearch }: IModalSearchProps) {
           <div className='relative'>
             <input
               type="text"
-              placeholder='Type anything to search...'
+              placeholder='Type anything to search / Click anywhere else to close'
               value={query}
               onChange={e => setQuery(e.target.value)}
               onKeyDown={e => handleEsc(e)}
@@ -64,10 +75,11 @@ export function ModalSearch({ showSearch, onCloseSearch }: IModalSearchProps) {
         }
         <div className="flex flex-col gap-2 overflow-y-scroll">
           {query.length > 0 ? searchTerms.map(t => (
-            <a href="#" className='relative border border-branco hover:border-cinza-100 rounded-md'>
+            <button onClick={() => gotToProduct(t.id)} className='group relative border border-branco flex hover:border-cinza-100 rounded-md'>
               <p className="p-2 pl-14">{t.title}</p>
               <img src={t.image} className="w-4 absolute top-2 left-4" />
-            </a>
+              <p className="hidden group-hover:block absolute right-4 top-2 text-sm text-roxo font-semibold">Go to product details</p>
+            </button>
           )) : null}
         </div>
       </div>

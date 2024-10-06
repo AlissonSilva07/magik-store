@@ -46,10 +46,10 @@ export function ProductPage() {
       setLoading(false)
       setProduct(data)
     }).catch(err => console.error(err))
+  }, [productId])
 
-    getProducts().then(data => {
-      setRelatedProducts(data)
-    }).catch(err => console.error(err))
+  useEffect(() => {
+    getProducts().then(data => setRelatedProducts(data)).catch(err => console.error(err))
   }, [])
 
   return (

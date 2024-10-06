@@ -11,7 +11,6 @@ export function ProductRelatedItem({ rp }: IProductRelatedItemProps) {
 
     const goToProduct = (newProduct: number) => {
         navigate(`/products/${newProduct}`)
-        window.location.reload()
     }
 
     return (

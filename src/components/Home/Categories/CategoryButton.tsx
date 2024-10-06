@@ -43,7 +43,7 @@ export function CategoryButton ({ title }: ICategoryButtonProps) {
         title === "men's clothing" ? MensClothing :
         title === "women's clothing" ? WomensClothing :
         'null'
-      } alt={title} className='w-full h-[92px] object-cover md:h-[184px] lg:h-[504px] rounded-lg opacity-70 group-hover:brightness-50' />
+      } alt={title} loading='lazy' className='w-full h-[92px] object-cover md:h-[184px] lg:h-[504px] rounded-lg opacity-70 group-hover:brightness-50' />
     </div>
   );
 }
